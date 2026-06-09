@@ -7,127 +7,96 @@
 <style>
   :root {
     --blue: #1a3a5c;
-    --blue-light: #e8f0f8;
+    --blue2: #2d6a9f;
     --green: #1a6641;
-    --green-light: #e6f4ed;
     --red: #c0392b;
     --border: #ddd;
     --muted: #666;
     --radius: 10px;
-    --yellow: #fffbe6;
-    --yellow-border: #e6d400;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f2f4f7; color: #1a1a1a; }
 
-  /* ── HEADER ── */
-  header {
-    background: var(--blue);
-    color: white;
-    padding: 16px 20px 14px;
-    position: sticky; top: 0; z-index: 10;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  header h1 { font-size: 17px; font-weight: 700; }
-  header p { font-size: 12px; opacity: 0.65; margin-top: 2px; }
-  .header-btns { display: flex; gap: 8px; }
-  .hbtn {
-    background: rgba(255,255,255,0.15);
-    border: none; color: white;
-    padding: 6px 12px; border-radius: 6px;
-    font-size: 12px; font-weight: 600; cursor: pointer;
-  }
-  .hbtn:active { background: rgba(255,255,255,0.25); }
-
-  /* ── BODY ── */
-  .body { padding: 16px; max-width: 480px; margin: 0 auto; }
-
   /* ── PIN SCREEN ── */
   #pin-screen {
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    background: #f2f4f7;
-    padding: 20px;
+    min-height: 100vh; display: flex; align-items: center;
+    justify-content: center; background: #f2f4f7; padding: 20px;
   }
   .pin-card {
-    background: white;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    padding: 32px 24px;
-    width: 100%; max-width: 340px;
-    text-align: center;
+    background: white; border-radius: 16px; border: 1px solid var(--border);
+    padding: 32px 24px; width: 100%; max-width: 340px; text-align: center;
   }
   .pin-logo {
     width: 56px; height: 56px;
-    background: var(--blue);
-    border-radius: 14px;
-    margin: 0 auto 16px;
+    background: linear-gradient(135deg, #1a3a5c, #2d6a9f);
+    border-radius: 14px; margin: 0 auto 16px;
     display: flex; align-items: center; justify-content: center;
   }
-  .pin-logo svg { width: 28px; height: 28px; fill: white; }
+  .pin-logo svg { width: 28px; height: 28px; }
   .pin-card h2 { font-size: 20px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
   .pin-card p { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
   .pin-input {
-    width: 100%; padding: 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    font-size: 24px; text-align: center;
-    letter-spacing: 8px; color: var(--blue);
-    margin-bottom: 14px;
+    width: 100%; padding: 14px; border: 1.5px solid var(--border);
+    border-radius: 10px; font-size: 24px; text-align: center;
+    letter-spacing: 8px; color: var(--blue); margin-bottom: 14px;
   }
   .pin-input:focus { outline: none; border-color: var(--blue); }
   .pin-btn {
     width: 100%; padding: 14px;
-    background: var(--blue); color: white;
-    border: none; border-radius: 10px;
+    background: linear-gradient(135deg, #1a3a5c, #2d6a9f);
+    color: white; border: none; border-radius: 10px;
     font-size: 16px; font-weight: 700; cursor: pointer;
   }
   .pin-error { color: var(--red); font-size: 13px; margin-top: 10px; display: none; }
 
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #1a3a5c, #2d6a9f);
+    color: white; padding: 16px 20px 14px;
+    position: sticky; top: 0; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  header h1 { font-size: 17px; font-weight: 700; }
+  header p { font-size: 12px; opacity: 0.7; margin-top: 2px; }
+  .hbtn {
+    background: rgba(255,255,255,0.15); border: none; color: white;
+    padding: 7px 14px; border-radius: 6px; font-size: 12px;
+    font-weight: 600; cursor: pointer;
+  }
+
+  /* ── BODY ── */
+  .body { padding: 16px; max-width: 480px; margin: 0 auto; }
+
   /* ── TABS ── */
   .tabs {
-    display: flex; gap: 0;
-    background: white;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    margin-bottom: 16px;
-    overflow: hidden;
+    display: flex; background: white; border-radius: var(--radius);
+    border: 1px solid var(--border); margin-bottom: 16px; overflow: hidden;
   }
   .tab {
-    flex: 1; padding: 11px 8px;
-    text-align: center; font-size: 13px; font-weight: 600;
-    color: var(--muted); cursor: pointer;
-    border: none; background: none;
-    border-bottom: 3px solid transparent;
+    flex: 1; padding: 11px 8px; text-align: center; font-size: 13px;
+    font-weight: 600; color: var(--muted); cursor: pointer;
+    border: none; background: none; border-bottom: 3px solid transparent;
   }
-  .tab.active { color: var(--blue); border-bottom-color: var(--blue); background: var(--blue-light); }
+  .tab.active { color: var(--blue); border-bottom-color: var(--blue); background: #e8f0f8; }
 
-  /* ── CARDS ── */
+  /* ── FORM CARDS ── */
   .card {
-    background: white;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    margin-bottom: 14px;
-    overflow: hidden;
+    background: white; border-radius: var(--radius);
+    border: 1px solid var(--border); margin-bottom: 14px; overflow: hidden;
   }
   .card-head {
-    background: var(--blue-light);
-    padding: 10px 16px;
-    font-size: 11px; font-weight: 700;
-    color: var(--blue);
-    text-transform: uppercase; letter-spacing: 0.6px;
+    background: linear-gradient(135deg, #e8f0f8, #d0e4f5);
+    padding: 10px 16px; font-size: 11px; font-weight: 700;
+    color: var(--blue); text-transform: uppercase; letter-spacing: 0.6px;
     border-bottom: 1px solid #cfe0f0;
   }
   .card-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
-
-  /* ── FIELDS ── */
   .field { display: flex; flex-direction: column; gap: 5px; }
   .field label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
   .field input, .field select {
-    padding: 11px 13px;
-    border: 1px solid #ccc; border-radius: 8px;
-    font-size: 15px; color: #1a1a1a;
-    background: white; -webkit-appearance: none; appearance: none; width: 100%;
+    padding: 11px 13px; border: 1px solid #ccc; border-radius: 8px;
+    font-size: 15px; color: #1a1a1a; background: white;
+    -webkit-appearance: none; appearance: none; width: 100%;
   }
   .field input:focus, .field select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(26,58,92,0.1); }
   .field select {
@@ -136,109 +105,201 @@
   }
   .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
+  /* ── PLACE AUTOCOMPLETE ── */
+  .autocomplete-wrap { position: relative; }
+  .autocomplete-list {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: white; border: 1px solid var(--blue);
+    border-radius: 8px; z-index: 100; max-height: 200px;
+    overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .autocomplete-item {
+    padding: 10px 13px; font-size: 14px; cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .autocomplete-item:last-child { border-bottom: none; }
+  .autocomplete-item:active { background: #e8f0f8; }
+  .autocomplete-pin { font-size: 12px; color: var(--muted); }
+
   /* ── SUMMARY ── */
   .calc-card {
-    background: var(--green-light);
-    border: 1px solid #b0d9c0;
-    border-radius: var(--radius);
+    background: linear-gradient(135deg, #e6f4ed, #d0eadc);
+    border: 1px solid #b0d9c0; border-radius: var(--radius);
     padding: 14px 16px; margin-bottom: 14px;
   }
-  .calc-card .heading { font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 10px; }
+  .calc-heading { font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 10px; }
   .calc-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 14px; border-bottom: 1px solid #cde8d8; }
-  .calc-row:last-child { border: none; font-size: 16px; font-weight: 700; color: var(--green); padding-top: 8px; }
+  .calc-row:last-child { border: none; font-size: 15px; font-weight: 700; color: var(--green); padding-top: 8px; }
 
   /* ── WORDS ── */
   .words-card {
-    background: var(--yellow); border: 1px solid var(--yellow-border);
-    border-radius: var(--radius); padding: 12px 16px; margin-bottom: 16px;
+    background: linear-gradient(135deg, #fffbe6, #fff8d0);
+    border: 1px solid #e6d400; border-radius: var(--radius);
+    padding: 12px 16px; margin-bottom: 16px;
   }
-  .words-card .wlabel { font-size: 11px; font-weight: 700; color: #7a6000; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-  .words-card .wtext { font-size: 13px; color: #3d3000; font-style: italic; font-weight: 500; line-height: 1.4; }
+  .wlabel { font-size: 11px; font-weight: 700; color: #7a6000; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .wtext { font-size: 13px; color: #3d3000; font-style: italic; font-weight: 500; line-height: 1.4; }
 
   /* ── BUTTONS ── */
   .btn-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
-  .btn {
-    width: 100%; padding: 14px; border-radius: var(--radius);
-    border: none; font-size: 16px; font-weight: 700; cursor: pointer;
-  }
-  .btn-primary { background: var(--blue); color: white; }
+  .btn { width: 100%; padding: 14px; border-radius: var(--radius); border: none; font-size: 16px; font-weight: 700; cursor: pointer; }
+  .btn-primary { background: linear-gradient(135deg, #1a3a5c, #2d6a9f); color: white; }
   .btn-secondary { background: white; color: var(--blue); border: 1.5px solid var(--blue); }
   .btn-ghost { background: #eee; color: #555; }
-  .btn-danger { background: white; color: var(--red); border: 1.5px solid var(--red); }
 
   /* ── HISTORY ── */
   .inv-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
   .inv-item {
-    background: white; border-radius: var(--radius);
-    border: 1px solid var(--border);
+    background: white; border-radius: var(--radius); border: 1px solid var(--border);
     padding: 14px 16px; cursor: pointer;
     display: flex; justify-content: space-between; align-items: center;
   }
-  .inv-item:active { background: var(--blue-light); }
-  .inv-item-left { display: flex; flex-direction: column; gap: 3px; }
+  .inv-item:active { background: #e8f0f8; }
   .inv-item-no { font-size: 14px; font-weight: 700; color: var(--blue); }
-  .inv-item-name { font-size: 13px; color: var(--muted); }
-  .inv-item-date { font-size: 12px; color: #999; }
+  .inv-item-name { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .inv-item-date { font-size: 12px; color: #999; margin-top: 2px; }
   .inv-item-amount { font-size: 15px; font-weight: 700; color: var(--green); }
   .empty-state { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; }
-
-  /* ── INVOICE PRINT VIEW ── */
-  #print-view { display: none; }
-  .inv-card {
-    background: white; border-radius: var(--radius);
-    border: 1px solid #bbb; margin-bottom: 14px; overflow: hidden; font-size: 13px;
-  }
-  .inv-title-bar {
-    background: var(--blue); color: white;
-    text-align: center; padding: 10px;
-    font-size: 15px; font-weight: 800; letter-spacing: 2px;
-  }
-  .inv-section { padding: 12px 14px; border-bottom: 1px solid #ddd; }
-  .inv-section:last-child { border-bottom: none; }
-  .inv-sec-label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 6px; }
-  .inv-row { display: flex; justify-content: space-between; padding: 3px 0; font-size: 13px; }
-  .inv-row span:first-child { color: var(--muted); }
-  .inv-row span:last-child { font-weight: 500; text-align: right; max-width: 60%; }
-  .inv-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  .inv-table th { background: #f5f5f5; padding: 7px 8px; text-align: center; border: 1px solid #ddd; font-size: 11px; }
-  .inv-table td { padding: 7px 8px; border: 1px solid #ddd; text-align: center; }
-  .inv-table td.tl { text-align: left; }
-  .inv-table tfoot td { font-weight: 700; background: #fafafa; }
-  .inv-words-bar {
-    background: var(--yellow); padding: 10px 14px;
-    border-top: 1px solid var(--yellow-border);
-    font-style: italic; font-size: 13px; color: #3d3000;
-    font-weight: 500; line-height: 1.4;
-  }
-  .inv-sign { padding: 12px 14px; text-align: right; }
-  .inv-sign-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-  .inv-sign-name { font-weight: 700; font-size: 14px; }
+  .loading { text-align: center; padding: 20px; color: var(--muted); font-size: 14px; }
 
   /* ── TOAST ── */
   .toast {
     position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-    background: #1a1a1a; color: white;
-    padding: 10px 20px; border-radius: 20px;
-    font-size: 13px; font-weight: 500;
-    z-index: 999; opacity: 0; transition: opacity 0.3s;
-    white-space: nowrap;
+    background: #1a1a1a; color: white; padding: 10px 20px;
+    border-radius: 20px; font-size: 13px; font-weight: 500;
+    z-index: 999; opacity: 0; transition: opacity 0.3s; white-space: nowrap;
   }
   .toast.show { opacity: 1; }
 
-  /* ── LOADING ── */
-  .loading { text-align: center; padding: 20px; color: var(--muted); font-size: 14px; }
+  /* ── PRINT VIEW (screen) ── */
+  #print-view { display: none; margin-bottom: 24px; }
 
-  /* ── A4 PRINT ── */
+  /* ════════════════════════════════════════
+     A4 INVOICE STYLES — screen preview
+  ════════════════════════════════════════ */
+  .a4-preview {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .a4-header {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2d6a9f 100%);
+    color: white;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .a4-header-left h2 { font-size: 18px; font-weight: 700; letter-spacing: 1px; margin-bottom: 2px; }
+  .a4-header-left p { font-size: 11px; opacity: 0.8; }
+  .a4-header-right { text-align: right; font-size: 11px; opacity: 0.9; line-height: 1.6; }
+
+  .a4-meta {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 2px solid #1a3a5c;
+  }
+  .a4-consignee {
+    padding: 12px 16px;
+    border-right: 1px solid #ddd;
+  }
+  .a4-invoice-info { padding: 12px 16px; }
+  .a4-section-label {
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.8px; color: #2d6a9f; margin-bottom: 6px;
+    font-family: -apple-system, sans-serif;
+  }
+  .a4-consignee-name { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+  .a4-consignee-addr { font-size: 11px; color: #333; line-height: 1.6; }
+  .a4-consignee-gst { font-size: 10px; color: #555; margin-top: 5px; }
+
+  .a4-info-row {
+    display: flex; justify-content: space-between;
+    font-size: 11px; padding: 2px 0;
+    border-bottom: 1px dotted #e0e0e0;
+  }
+  .a4-info-row:last-child { border-bottom: none; }
+  .a4-info-label { color: #666; font-family: -apple-system, sans-serif; }
+  .a4-info-value { font-weight: 600; text-align: right; max-width: 55%; font-family: -apple-system, sans-serif; }
+
+  .a4-table-wrap { padding: 0 16px 0; }
+  .a4-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 12px; margin: 12px 0;
+    font-family: -apple-system, sans-serif;
+  }
+  .a4-table th {
+    background: linear-gradient(135deg, #1a3a5c, #2d6a9f);
+    color: white; padding: 8px 10px; text-align: center;
+    font-size: 11px; font-weight: 600;
+  }
+  .a4-table th.tl { text-align: left; }
+  .a4-table td { padding: 9px 10px; border-bottom: 1px solid #eee; text-align: center; font-size: 12px; }
+  .a4-table td.tl { text-align: left; }
+  .a4-table tbody tr:nth-child(even) { background: #f8f8f8; }
+  .a4-table tfoot td {
+    border-top: 2px solid #1a3a5c; border-bottom: none;
+    font-weight: 700; font-size: 13px; background: #f0f5ff;
+  }
+
+  .a4-footer {
+    margin: 0 16px 16px;
+    border: 1px solid #ddd; border-radius: 6px; overflow: hidden;
+  }
+  .a4-words {
+    background: linear-gradient(135deg, #fffbe6, #fff8d0);
+    padding: 10px 14px; border-bottom: 1px solid #e6d400;
+  }
+  .a4-words-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #7a6000; font-family: -apple-system, sans-serif; margin-bottom: 3px; }
+  .a4-words-text { font-size: 12px; color: #3d3000; font-style: italic; font-weight: 600; font-family: -apple-system, sans-serif; }
+
+  .a4-sign-row {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding: 12px 14px; background: white;
+  }
+  .a4-sign-left { font-size: 10px; color: #888; font-family: -apple-system, sans-serif; }
+  .a4-sign-right { text-align: right; font-family: -apple-system, sans-serif; }
+  .a4-sign-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 3px; }
+  .a4-sign-name { font-size: 13px; font-weight: 700; color: var(--blue); }
+
+  /* ════════════════════════════════════════
+     PRINT STYLES — exact A4
+  ════════════════════════════════════════ */
   @media print {
-    @page { size: A4; margin: 12mm; }
+    @page { size: A4 portrait; margin: 10mm 12mm; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
     body { background: white; }
-    header, #pin-screen, .tabs, .body > .card,
-    .calc-card, .words-card, .btn-stack, #history-tab { display: none !important; }
-    #print-view { display: block !important; }
-    .inv-card { border: 1.5px solid #000; border-radius: 0; page-break-inside: avoid; }
-    .inv-title-bar { background: #1a3a5c !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .inv-words-bar { background: #fffbe6 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    header, #pin-screen, .tabs, #form-tab .card,
+    .calc-card, .words-card, .btn-stack,
+    #history-tab, .toast { display: none !important; }
+
     .body { padding: 0; max-width: none; }
+    #print-view { display: block !important; margin: 0; }
+
+    .a4-preview {
+      border: none; border-radius: 0;
+      width: 100%; box-shadow: none;
+    }
+    .a4-header { padding: 12mm 14mm 10mm; }
+    .a4-header-left h2 { font-size: 22px; }
+    .a4-meta { border-bottom: 2px solid #1a3a5c; }
+    .a4-consignee, .a4-invoice-info { padding: 8mm 14mm; }
+    .a4-table-wrap { padding: 0 14mm; }
+    .a4-table { margin: 6mm 0; }
+    .a4-table th { font-size: 12px; padding: 7px 10px; }
+    .a4-table td { font-size: 13px; padding: 8px 10px; }
+    .a4-table tfoot td { font-size: 14px; }
+    .a4-footer { margin: 0 14mm 10mm; }
+    .a4-words { padding: 8px 14px; }
+    .a4-words-text { font-size: 13px; }
+    .a4-sign-row { padding: 10px 14px; }
+    .a4-consignee-name { font-size: 16px; }
+    .a4-consignee-addr { font-size: 12px; }
+    .a4-info-row { font-size: 12px; padding: 3px 0; }
+    .a4-info-value { font-size: 12px; }
   }
 </style>
 </head>
@@ -248,14 +309,14 @@
 <div id="pin-screen">
   <div class="pin-card">
     <div class="pin-logo">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
     </div>
     <h2>Regal Plastics</h2>
     <p>URP Purchase · Enter PIN to continue</p>
     <input type="password" class="pin-input" id="pinInput" placeholder="••••" inputmode="numeric" maxlength="6" />
-    <button class="pin-btn" onclick="doLogin()">Unlock</button>
+    <button type="button" class="pin-btn" onclick="doLogin()">Unlock</button>
     <div class="pin-error" id="pinError">Incorrect PIN. Try again.</div>
   </div>
 </div>
@@ -267,26 +328,25 @@
       <h1>URP Purchase</h1>
       <p>Regal Plastics · Hubballi</p>
     </div>
-    <div class="header-btns">
-      <button class="hbtn" onclick="doLogout()">Logout</button>
-    </div>
+    <button type="button" class="hbtn" onclick="doLogout()">Logout</button>
   </header>
 
   <div class="body">
     <div class="tabs">
-      <button class="tab active" onclick="showTab('form')" id="tab-form">New Invoice</button>
-      <button class="tab" onclick="showTab('history')" id="tab-history">History</button>
+      <button type="button" class="tab active" onclick="showTab('form')" id="tab-form">New Invoice</button>
+      <button type="button" class="tab" onclick="showTab('history')" id="tab-history">History</button>
     </div>
 
     <!-- FORM TAB -->
     <div id="form-tab">
+
       <div class="card">
         <div class="card-head">Invoice Details</div>
         <div class="card-body">
           <div class="row2">
             <div class="field">
               <label>Invoice No</label>
-              <input type="text" id="invoiceNo" readonly style="background:#f5f5f5; color:#666;" />
+              <input type="text" id="invoiceNo" readonly style="background:#f5f5f5;color:#666;" />
             </div>
             <div class="field">
               <label>Date</label>
@@ -306,11 +366,14 @@
           <div class="row2">
             <div class="field">
               <label>Place</label>
-              <input type="text" id="place" placeholder="City / Town" />
+              <div class="autocomplete-wrap">
+                <input type="text" id="placeInput" placeholder="Type city..." autocomplete="off" oninput="filterPlaces()" />
+                <div class="autocomplete-list" id="placeList" style="display:none"></div>
+              </div>
             </div>
             <div class="field">
               <label>Pin Code</label>
-              <input type="number" id="pinCode" placeholder="580026" inputmode="numeric" />
+              <input type="text" id="pinCode" placeholder="Auto-filled" inputmode="numeric" maxlength="6" />
             </div>
           </div>
           <div class="field">
@@ -361,7 +424,7 @@
       </div>
 
       <div class="calc-card">
-        <div class="heading">Summary</div>
+        <div class="calc-heading">Summary</div>
         <div class="calc-row"><span>Quantity</span><span id="s-qty">0 Kgs</span></div>
         <div class="calc-row"><span>Rate</span><span id="s-rate">₹ 8.00 / Kg</span></div>
         <div class="calc-row"><span>Total</span><span id="s-total">₹ 0.00</span></div>
@@ -373,44 +436,59 @@
       </div>
 
       <div class="btn-stack">
-        <button class="btn btn-primary" onclick="generateInvoice()">Generate &amp; Save Invoice</button>
-        <button class="btn btn-secondary" onclick="printCurrent()">Print / Save as PDF</button>
-        <button class="btn btn-ghost" onclick="resetForm()">Reset Form</button>
+        <button type="button" class="btn btn-primary" onclick="generateInvoice()">Generate &amp; Save Invoice</button>
+        <button type="button" class="btn btn-secondary" onclick="printCurrent()">Print / Save as PDF</button>
+        <button type="button" class="btn btn-ghost" onclick="resetForm()">Reset Form</button>
       </div>
 
-      <!-- PRINT VIEW (hidden until generate) -->
+      <!-- A4 INVOICE PREVIEW -->
       <div id="print-view">
-        <div class="inv-card">
-          <div class="inv-title-bar">URP PURCHASE</div>
-          <div class="inv-section">
-            <div class="inv-sec-label">Consignee</div>
-            <div style="font-weight:700; font-size:14px; margin-bottom:4px">Regal Plastics</div>
-            <div style="font-size:12px; color:#444; line-height:1.6">
-              Survey No 68, Plot no 65-G3, Tarihal Industrial Area<br>
-              Hubballi, Dharwad 580026, Karnataka
+        <div class="a4-preview">
+          <div class="a4-header">
+            <div class="a4-header-left">
+              <h2>URP PURCHASE</h2>
+              <p>Unregistered Person Purchase Invoice</p>
             </div>
-            <div style="font-size:11px; color:#555; margin-top:6px">
-              GST: 29AEFPT1601P1Z3 &nbsp;|&nbsp; State: Karnataka (29)
+            <div class="a4-header-right">
+              <div id="h-invno" style="font-size:13px;font-weight:700;"></div>
+              <div id="h-date"></div>
             </div>
           </div>
-          <div class="inv-section">
-            <div class="inv-sec-label">Invoice Info</div>
-            <div class="inv-row"><span>Consignor</span><span id="p-consignor">—</span></div>
-            <div class="inv-row"><span>Invoice No</span><span id="p-invno">—</span></div>
-            <div class="inv-row"><span>Date</span><span id="p-date">—</span></div>
-            <div class="inv-row"><span>Place &amp; Pin</span><span id="p-place">—</span></div>
-            <div class="inv-row"><span>Vehicle No</span><span id="p-vehicle">—</span></div>
+
+          <div class="a4-meta">
+            <div class="a4-consignee">
+              <div class="a4-section-label">Consignee</div>
+              <div class="a4-consignee-name">Regal Plastics</div>
+              <div class="a4-consignee-addr">
+                Survey No 68, Plot No 65-G3<br>
+                Tarihal Industrial Area<br>
+                Hubballi, Dharwad — 580026<br>
+                Karnataka
+              </div>
+              <div class="a4-consignee-gst">
+                GST: 29AEFPT1601P1Z3 &nbsp;|&nbsp; State Code: 29
+              </div>
+            </div>
+            <div class="a4-invoice-info">
+              <div class="a4-section-label">Supplier Details</div>
+              <div class="a4-info-row"><span class="a4-info-label">Consignor</span><span class="a4-info-value" id="p-consignor">—</span></div>
+              <div class="a4-info-row"><span class="a4-info-label">Place</span><span class="a4-info-value" id="p-place">—</span></div>
+              <div class="a4-info-row"><span class="a4-info-label">Pin Code</span><span class="a4-info-value" id="p-pin">—</span></div>
+              <div class="a4-info-row"><span class="a4-info-label">Vehicle No</span><span class="a4-info-value" id="p-vehicle">—</span></div>
+              <div class="a4-info-row"><span class="a4-info-label">Suppliers Ref</span><span class="a4-info-value">—</span></div>
+            </div>
           </div>
-          <div class="inv-section" style="padding:0; overflow-x:auto;">
-            <table class="inv-table">
+
+          <div class="a4-table-wrap">
+            <table class="a4-table">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th class="tl">Description</th>
-                  <th>HSN</th>
-                  <th>Qty (Kg)</th>
-                  <th>Rate</th>
-                  <th>Amount</th>
+                  <th style="width:32px">#</th>
+                  <th class="tl">Description of Goods</th>
+                  <th style="width:52px">HSN</th>
+                  <th style="width:72px">Qty (Kg)</th>
+                  <th style="width:64px">Rate/Kg</th>
+                  <th style="width:88px">Amount (₹)</th>
                 </tr>
               </thead>
               <tbody>
@@ -425,7 +503,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <td colspan="3" style="text-align:right">TOTAL</td>
+                  <td colspan="3" style="text-align:right;font-size:11px;letter-spacing:0.5px;">TOTAL</td>
                   <td id="p-total-qty">—</td>
                   <td></td>
                   <td id="p-total-amount">—</td>
@@ -433,12 +511,19 @@
               </tfoot>
             </table>
           </div>
-          <div class="inv-words-bar">
-            Amount in Words: <span id="p-words">—</span>
-          </div>
-          <div class="inv-sign">
-            <div class="inv-sign-label">Authorised Signatory</div>
-            <div class="inv-sign-name">Regal Plastics</div>
+
+          <div class="a4-footer">
+            <div class="a4-words">
+              <div class="a4-words-label">Amount in Words</div>
+              <div class="a4-words-text" id="p-words">—</div>
+            </div>
+            <div class="a4-sign-row">
+              <div class="a4-sign-left">Generated via Regal Plastics URP System</div>
+              <div class="a4-sign-right">
+                <div class="a4-sign-label">Authorised Signatory</div>
+                <div class="a4-sign-name">Regal Plastics</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -452,57 +537,124 @@
       </div>
     </div>
 
-  </div><!-- /body -->
-</div><!-- /main-app -->
+  </div>
+</div>
 
 <div class="toast" id="toast"></div>
 
 <script>
 const API = 'https://regal-urp-backend.onrender.com';
-let sessionActive = false;
 
-// ── UTILS ────────────────────────────────────────────────
+// ── KARNATAKA PLACES ─────────────────────────────────────
+const KA_PLACES = [
+  {name:'Hubballi',pin:'580020'},{name:'Dharwad',pin:'580001'},
+  {name:'Bengaluru',pin:'560001'},{name:'Mysuru',pin:'570001'},
+  {name:'Mangaluru',pin:'575001'},{name:'Belagavi',pin:'590001'},
+  {name:'Davangere',pin:'577001'},{name:'Ballari',pin:'583101'},
+  {name:'Shivamogga',pin:'577201'},{name:'Tumakuru',pin:'572101'},
+  {name:'Raichur',pin:'584101'},{name:'Bidar',pin:'585401'},
+  {name:'Vijayapura',pin:'586101'},{name:'Kalaburagi',pin:'585101'},
+  {name:'Hassan',pin:'573201'},{name:'Mandya',pin:'571401'},
+  {name:'Udupi',pin:'576101'},{name:'Chikkamagaluru',pin:'577101'},
+  {name:'Kolar',pin:'563101'},{name:'Gadag',pin:'582101'},
+  {name:'Haveri',pin:'581110'},{name:'Sirsi',pin:'581401'},
+  {name:'Karwar',pin:'581301'},{name:'Bagalkot',pin:'587101'},
+  {name:'Chitradurga',pin:'577501'},{name:'Koppal',pin:'583231'},
+  {name:'Yadgir',pin:'585201'},{name:'Chamarajanagar',pin:'571313'},
+  {name:'Kodagu',pin:'571201'},{name:'Chikkaballapur',pin:'562101'},
+  {name:'Ramanagara',pin:'562159'},{name:'Bangarpet',pin:'563114'},
+  {name:'Hospet',pin:'583201'},{name:'Gangavathi',pin:'583227'},
+  {name:'Bhadravati',pin:'577301'},{name:'Robertsonpet',pin:'563122'},
+  {name:'Lakshmeshwara',pin:'582116'},{name:'Nanjangud',pin:'571301'},
+  {name:'Gokak',pin:'591307'},{name:'Mudhol',pin:'587313'},
+  {name:'Saundatti',pin:'591126'},{name:'Ankola',pin:'581314'},
+  {name:'Kumta',pin:'581343'},{name:'Honnavar',pin:'581334'},
+  {name:'Bhatkal',pin:'581320'},{name:'Puttur',pin:'574201'},
+  {name:'Sullia',pin:'574239'},{name:'Madikeri',pin:'571201'},
+  {name:'Virajpet',pin:'571218'},{name:'Sagara',pin:'577401'},
+  {name:'Tirthahalli',pin:'577432'},{name:'Holenarasipur',pin:'573211'},
+  {name:'Arsikere',pin:'573103'},{name:'Tarikere',pin:'577228'},
+  {name:'Shimoga',pin:'577201'},{name:'Ranebennur',pin:'581115'},
+  {name:'Byadgi',pin:'581106'},{name:'Hirekerur',pin:'581111'},
+  {name:'Hanagal',pin:'581104'},{name:'Savanur',pin:'581118'},
+  {name:'Shiggaon',pin:'581205'},{name:'Kundgol',pin:'582113'},
+  {name:'Nargund',pin:'582207'},{name:'Mundargi',pin:'582118'},
+  {name:'Ron',pin:'582209'},{name:'Shirahatti',pin:'582120'},
+  {name:'Hoovina Hadagali',pin:'583219'},{name:'Hagaribommanahalli',pin:'583212'},
+  {name:'Kudligi',pin:'583135'},{name:'Sandur',pin:'583119'},
+  {name:'Kampli',pin:'583132'},{name:'Siruguppa',pin:'583121'},
+  {name:'Sindhanur',pin:'584128'},{name:'Manvi',pin:'584123'},
+  {name:'Lingasugur',pin:'584122'},{name:'Devadurga',pin:'584111'},
+  {name:'Muddebihal',pin:'586212'},{name:'Indi',pin:'586209'},
+  {name:'Basavana Bagewadi',pin:'586203'},{name:'Hungund',pin:'587118'},
+  {name:'Ilkal',pin:'587125'},{name:'Badami',pin:'587201'},
+  {name:'Jamkhandi',pin:'587301'},{name:'Rabkavi Banhatti',pin:'587311'},
+  {name:'Bilgi',pin:'587116'},{name:'Nippani',pin:'591237'},
+  {name:'Chikodi',pin:'591201'},{name:'Athani',pin:'591304'},
+  {name:'Raibag',pin:'591317'},{name:'Hukkeri',pin:'591309'},
+  {name:'Bailhongal',pin:'591102'},{name:'Kalghatgi',pin:'580067'},
+  {name:'Alnavar',pin:'581103'},{name:'Mundgod',pin:'581349'},
+  {name:'Yellapur',pin:'581359'},{name:'Haliyal',pin:'581329'},
+  {name:'Dandeli',pin:'581325'},{name:'Joida',pin:'581186'},
+  {name:'Karkal',pin:'574104'},{name:'Bantval',pin:'574219'},
+  {name:'Belthangady',pin:'574214'},{name:'Moodbidri',pin:'574227'},
+  {name:'Kundapur',pin:'576201'},{name:'Byndoor',pin:'576214'},
+  {name:'Yellare',pin:'576220'}
+];
+
+function filterPlaces() {
+  const val = document.getElementById('placeInput').value.trim().toLowerCase();
+  const list = document.getElementById('placeList');
+  if (val.length < 2) { list.style.display = 'none'; return; }
+  const matches = KA_PLACES.filter(p => p.name.toLowerCase().includes(val)).slice(0, 8);
+  if (!matches.length) { list.style.display = 'none'; return; }
+  list.innerHTML = matches.map(p => `
+    <div class="autocomplete-item" onclick="selectPlace('${p.name}','${p.pin}')">
+      <span>${p.name}</span>
+      <span class="autocomplete-pin">${p.pin}</span>
+    </div>
+  `).join('');
+  list.style.display = 'block';
+}
+
+function selectPlace(name, pin) {
+  document.getElementById('placeInput').value = name;
+  document.getElementById('pinCode').value = pin;
+  document.getElementById('placeList').style.display = 'none';
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.autocomplete-wrap')) {
+    document.getElementById('placeList').style.display = 'none';
+  }
+});
+
+// ── WORDS ────────────────────────────────────────────────
 const ones = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine',
   'Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
 const tens = ['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
-
 function n2w(n) {
-  n = Math.round(n);
-  if (n === 0) return 'Zero';
+  n = Math.round(n); if (n === 0) return 'Zero';
   let w = '';
   if (n >= 10000000) { w += n2w(Math.floor(n/10000000)) + ' Crore '; n %= 10000000; }
   if (n >= 100000)   { w += n2w(Math.floor(n/100000))   + ' Lakh ';  n %= 100000; }
   if (n >= 1000)     { w += n2w(Math.floor(n/1000))     + ' Thousand '; n %= 1000; }
   if (n >= 100)      { w += ones[Math.floor(n/100)]     + ' Hundred '; n %= 100; }
-  if (n >= 20)       { w += tens[Math.floor(n/10)] + (n%10 ? ' '+ones[n%10] : '') + ' '; }
+  if (n >= 20)       { w += tens[Math.floor(n/10)] + (n%10?' '+ones[n%10]:'') + ' '; }
   else if (n > 0)    { w += ones[n] + ' '; }
   return w.trim();
 }
-
 function toWords(amount) {
-  const r = Math.floor(amount);
-  const p = Math.round((amount - r) * 100);
-  let s = n2w(r);
-  if (p > 0) s += ' and ' + n2w(p) + ' Paise';
-  return s + ' Only';
+  const r = Math.floor(amount), p = Math.round((amount-r)*100);
+  return n2w(r) + (p>0?' and '+n2w(p)+' Paise':'') + ' Only';
 }
-
-function fmt(n) {
-  return Number(n).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
-
+function fmt(n) { return Number(n).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2}); }
 function fmtQty(n) { return Number(n).toLocaleString('en-IN'); }
-
-function fmtDate(d) {
-  if (!d) return '—';
-  const [y,m,day] = d.split('-');
-  return `${day}/${m}/${y}`;
-}
+function fmtDate(d) { if(!d) return '—'; const [y,m,day]=d.split('-'); return `${day}/${m}/${y}`; }
 
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 
@@ -512,47 +664,39 @@ async function doLogin() {
   if (!pin) return;
   try {
     const res = await fetch(`${API}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pin })
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({pin})
     });
     const data = await res.json();
     if (data.success) {
-      sessionActive = true;
       document.getElementById('pin-screen').style.display = 'none';
       document.getElementById('main-app').style.display = 'block';
-      loadNextNumber();
       document.getElementById('invoiceDate').value = new Date().toISOString().split('T')[0];
-      recalc();
+      loadNextNumber(); recalc();
     } else {
       document.getElementById('pinError').style.display = 'block';
       document.getElementById('pinInput').value = '';
     }
-  } catch (e) {
+  } catch(e) {
     document.getElementById('pinError').textContent = 'Connection error. Try again.';
     document.getElementById('pinError').style.display = 'block';
   }
 }
-
 function doLogout() {
-  sessionActive = false;
   document.getElementById('pin-screen').style.display = 'flex';
   document.getElementById('main-app').style.display = 'none';
   document.getElementById('pinInput').value = '';
   document.getElementById('pinError').style.display = 'none';
 }
-
-document.getElementById('pinInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter') doLogin();
-});
+document.getElementById('pinInput').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 
 // ── TABS ─────────────────────────────────────────────────
 function showTab(tab) {
-  document.getElementById('form-tab').style.display = tab === 'form' ? 'block' : 'none';
-  document.getElementById('history-tab').style.display = tab === 'history' ? 'block' : 'none';
-  document.getElementById('tab-form').classList.toggle('active', tab === 'form');
-  document.getElementById('tab-history').classList.toggle('active', tab === 'history');
-  if (tab === 'history') loadHistory();
+  document.getElementById('form-tab').style.display = tab==='form'?'block':'none';
+  document.getElementById('history-tab').style.display = tab==='history'?'block':'none';
+  document.getElementById('tab-form').classList.toggle('active', tab==='form');
+  document.getElementById('tab-history').classList.toggle('active', tab==='history');
+  if (tab==='history') loadHistory();
 }
 
 // ── NEXT NUMBER ──────────────────────────────────────────
@@ -561,112 +705,90 @@ async function loadNextNumber() {
     const res = await fetch(`${API}/invoice/next-number`);
     const data = await res.json();
     document.getElementById('invoiceNo').value = data.invoice_number;
-  } catch (e) {
-    document.getElementById('invoiceNo').value = 'Error loading';
-  }
+  } catch(e) { document.getElementById('invoiceNo').value = 'Error'; }
 }
 
 // ── RECALC ───────────────────────────────────────────────
 function recalc() {
-  const qty  = parseFloat(document.getElementById('quantity').value) || 0;
-  const rate = parseFloat(document.getElementById('rate').value) || 0;
-  const amt  = qty * rate;
-  document.getElementById('s-qty').textContent   = fmtQty(qty) + ' Kgs';
-  document.getElementById('s-rate').textContent  = '₹ ' + fmt(rate) + ' / Kg';
-  document.getElementById('s-total').textContent = '₹ ' + fmt(amt);
-  document.getElementById('amountWords').textContent = amt > 0 ? toWords(amt) : '—';
+  const qty = parseFloat(document.getElementById('quantity').value)||0;
+  const rate = parseFloat(document.getElementById('rate').value)||0;
+  const amt = qty*rate;
+  document.getElementById('s-qty').textContent = fmtQty(qty)+' Kgs';
+  document.getElementById('s-rate').textContent = '₹ '+fmt(rate)+' / Kg';
+  document.getElementById('s-total').textContent = '₹ '+fmt(amt);
+  document.getElementById('amountWords').textContent = amt>0?toWords(amt):'—';
 }
 
 // ── GENERATE ─────────────────────────────────────────────
 async function generateInvoice() {
-  const qty    = parseFloat(document.getElementById('quantity').value) || 0;
-  const rate   = parseFloat(document.getElementById('rate').value) || 0;
-  const amt    = qty * rate;
+  const qty   = parseFloat(document.getElementById('quantity').value)||0;
+  const rate  = parseFloat(document.getElementById('rate').value)||0;
+  const amt   = qty*rate;
+  const name  = document.getElementById('consignorName').value.trim();
+  if (!name)       { showToast('Enter consignor name'); return; }
+  if (!qty||qty<=0){ showToast('Enter valid quantity'); return; }
+  if (!rate||rate<=0){ showToast('Enter valid rate'); return; }
 
-  if (!document.getElementById('consignorName').value.trim()) { showToast('Enter consignor name'); return; }
-  if (!qty || qty <= 0) { showToast('Enter valid quantity'); return; }
-  if (!rate || rate <= 0) { showToast('Enter valid rate'); return; }
-
-  const invNo   = document.getElementById('invoiceNo').value;
-  const date    = document.getElementById('invoiceDate').value;
-  const name    = document.getElementById('consignorName').value.trim();
-  const place   = document.getElementById('place').value.trim();
-  const pin     = document.getElementById('pinCode').value.trim();
-  const veh     = document.getElementById('vehicleNo').value.toUpperCase().trim();
-  const hsn     = document.getElementById('hsnCode').value;
-  let desc      = document.getElementById('productDesc').value;
-  if (desc === 'Custom') desc = document.getElementById('customDesc').value || '—';
-  const words   = toWords(amt);
+  const date  = document.getElementById('invoiceDate').value;
+  const place = document.getElementById('placeInput').value.trim();
+  const pin   = document.getElementById('pinCode').value.trim();
+  const veh   = document.getElementById('vehicleNo').value.toUpperCase().trim();
+  const hsn   = document.getElementById('hsnCode').value;
+  let desc    = document.getElementById('productDesc').value;
+  if (desc==='Custom') desc = document.getElementById('customDesc').value||'—';
+  const words = toWords(amt);
 
   try {
     const res = await fetch(`${API}/invoice/generate`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
-        invoice_date: date,
-        consignor_name: name,
-        place, pincode: pin,
-        vehicle_number: veh,
-        product_desc: desc,
-        hsn_code: hsn,
-        quantity: qty,
-        rate, amount: amt,
-        amount_words: words
+        invoice_date:date, consignor_name:name, place, pincode:pin,
+        vehicle_number:veh, product_desc:desc, hsn_code:hsn,
+        quantity:qty, rate, amount:amt, amount_words:words
       })
     });
     const data = await res.json();
     if (!data.success) { showToast('Error saving invoice'); return; }
 
-    // Populate print view
+    // Fill A4 preview
+    document.getElementById('h-invno').textContent  = data.invoice_number;
+    document.getElementById('h-date').textContent   = fmtDate(date);
     document.getElementById('p-consignor').textContent = name;
-    document.getElementById('p-invno').textContent     = data.invoice_number;
-    document.getElementById('p-date').textContent      = fmtDate(date);
-    document.getElementById('p-place').textContent     = place + (pin ? ' — ' + pin : '');
-    document.getElementById('p-vehicle').textContent   = veh || '—';
-    document.getElementById('p-desc').textContent      = desc;
-    document.getElementById('p-hsn').textContent       = hsn;
-    document.getElementById('p-qty').textContent       = fmtQty(qty);
-    document.getElementById('p-rate').textContent      = fmt(rate);
-    document.getElementById('p-amount').textContent    = fmt(amt);
-    document.getElementById('p-total-qty').textContent = fmtQty(qty);
+    document.getElementById('p-place').textContent  = place||'—';
+    document.getElementById('p-pin').textContent    = pin||'—';
+    document.getElementById('p-vehicle').textContent= veh||'—';
+    document.getElementById('p-desc').textContent   = desc;
+    document.getElementById('p-hsn').textContent    = hsn;
+    document.getElementById('p-qty').textContent    = fmtQty(qty);
+    document.getElementById('p-rate').textContent   = fmt(rate);
+    document.getElementById('p-amount').textContent = fmt(amt);
+    document.getElementById('p-total-qty').textContent    = fmtQty(qty);
     document.getElementById('p-total-amount').textContent = fmt(amt);
-    document.getElementById('p-words').textContent     = words;
+    document.getElementById('p-words').textContent  = words;
 
     document.getElementById('print-view').style.display = 'block';
-    document.getElementById('print-view').scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    // Update invoice number for next one
-    document.getElementById('invoiceNo').value = data.invoice_number;
-    showToast('Invoice ' + data.invoice_number + ' saved ✓');
-
-    // Pre-load next number
+    document.getElementById('print-view').scrollIntoView({behavior:'smooth',block:'start'});
+    showToast(data.invoice_number+' saved ✓');
     loadNextNumber();
-
-  } catch (e) {
-    showToast('Network error. Try again.');
-  }
+  } catch(e) { showToast('Network error. Try again.'); }
 }
 
 function printCurrent() {
-  if (document.getElementById('print-view').style.display === 'none') {
-    showToast('Generate invoice first');
-    return;
+  if (document.getElementById('print-view').style.display==='none') {
+    showToast('Generate invoice first'); return;
   }
   window.print();
 }
 
 function resetForm() {
-  document.getElementById('consignorName').value = '';
-  document.getElementById('place').value = '';
-  document.getElementById('pinCode').value = '';
-  document.getElementById('vehicleNo').value = '';
-  document.getElementById('quantity').value = '';
+  ['consignorName','placeInput','pinCode','vehicleNo','quantity'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
   document.getElementById('rate').value = '8';
   document.getElementById('print-view').style.display = 'none';
   document.getElementById('invoiceDate').value = new Date().toISOString().split('T')[0];
-  loadNextNumber();
-  recalc();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  loadNextNumber(); recalc();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 // ── HISTORY ──────────────────────────────────────────────
@@ -676,56 +798,48 @@ async function loadHistory() {
   try {
     const res = await fetch(`${API}/invoices`);
     const data = await res.json();
-    if (!data.length) {
-      list.innerHTML = '<div class="empty-state">No invoices yet.</div>';
-      return;
-    }
+    if (!data.length) { list.innerHTML = '<div class="empty-state">No invoices yet.</div>'; return; }
     list.innerHTML = data.map(inv => `
       <div class="inv-item" onclick="viewInvoice('${inv.id}')">
-        <div class="inv-item-left">
+        <div>
           <div class="inv-item-no">${inv.invoice_number}</div>
           <div class="inv-item-name">${inv.consignor_name}</div>
-          <div class="inv-item-date">${fmtDate(inv.invoice_date)} &nbsp;·&nbsp; ${fmtQty(inv.quantity)} Kgs</div>
+          <div class="inv-item-date">${fmtDate(inv.invoice_date)} · ${fmtQty(inv.quantity)} Kgs</div>
         </div>
         <div class="inv-item-amount">₹${fmt(inv.amount)}</div>
       </div>
     `).join('');
-  } catch (e) {
-    list.innerHTML = '<div class="empty-state">Could not load. Check connection.</div>';
-  }
+  } catch(e) { list.innerHTML = '<div class="empty-state">Could not load. Check connection.</div>'; }
 }
 
 function viewInvoice(id) {
-  fetch(`${API}/invoices/${id}`)
-    .then(r => r.json())
-    .then(inv => {
-      document.getElementById('p-consignor').textContent = inv.consignor_name;
-      document.getElementById('p-invno').textContent     = inv.invoice_number;
-      document.getElementById('p-date').textContent      = fmtDate(inv.invoice_date);
-      document.getElementById('p-place').textContent     = inv.place + (inv.pincode ? ' — ' + inv.pincode : '');
-      document.getElementById('p-vehicle').textContent   = inv.vehicle_number || '—';
-      document.getElementById('p-desc').textContent      = inv.product_desc;
-      document.getElementById('p-hsn').textContent       = inv.hsn_code;
-      document.getElementById('p-qty').textContent       = fmtQty(inv.quantity);
-      document.getElementById('p-rate').textContent      = fmt(inv.rate);
-      document.getElementById('p-amount').textContent    = fmt(inv.amount);
-      document.getElementById('p-total-qty').textContent = fmtQty(inv.quantity);
-      document.getElementById('p-total-amount').textContent = fmt(inv.amount);
-      document.getElementById('p-words').textContent     = inv.amount_words;
-      document.getElementById('print-view').style.display = 'block';
-      showTab('form');
-      document.getElementById('print-view').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+  fetch(`${API}/invoices/${id}`).then(r=>r.json()).then(inv => {
+    document.getElementById('h-invno').textContent  = inv.invoice_number;
+    document.getElementById('h-date').textContent   = fmtDate(inv.invoice_date);
+    document.getElementById('p-consignor').textContent = inv.consignor_name;
+    document.getElementById('p-place').textContent  = inv.place||'—';
+    document.getElementById('p-pin').textContent    = inv.pincode||'—';
+    document.getElementById('p-vehicle').textContent= inv.vehicle_number||'—';
+    document.getElementById('p-desc').textContent   = inv.product_desc;
+    document.getElementById('p-hsn').textContent    = inv.hsn_code;
+    document.getElementById('p-qty').textContent    = fmtQty(inv.quantity);
+    document.getElementById('p-rate').textContent   = fmt(inv.rate);
+    document.getElementById('p-amount').textContent = fmt(inv.amount);
+    document.getElementById('p-total-qty').textContent    = fmtQty(inv.quantity);
+    document.getElementById('p-total-amount').textContent = fmt(inv.amount);
+    document.getElementById('p-words').textContent  = inv.amount_words;
+    document.getElementById('print-view').style.display = 'block';
+    showTab('form');
+    document.getElementById('print-view').scrollIntoView({behavior:'smooth',block:'start'});
+  });
 }
 
 // ── EVENTS ───────────────────────────────────────────────
 document.getElementById('productDesc').addEventListener('change', function() {
-  document.getElementById('customDescGroup').style.display = this.value === 'Custom' ? 'flex' : 'none';
+  document.getElementById('customDescGroup').style.display = this.value==='Custom'?'flex':'none';
 });
 ['quantity','rate'].forEach(id => document.getElementById(id).addEventListener('input', recalc));
-document.getElementById('vehicleNo').addEventListener('input', function() {
-  this.value = this.value.toUpperCase();
-});
+document.getElementById('vehicleNo').addEventListener('input', function() { this.value = this.value.toUpperCase(); });
 </script>
 </body>
 </html>
