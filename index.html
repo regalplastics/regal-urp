@@ -17,7 +17,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f2f4f7; color: #1a1a1a; }
 
-  /* ── PIN SCREEN ── */
+  /* PIN SCREEN */
   #pin-screen {
     min-height: 100vh; display: flex; align-items: center;
     justify-content: center; background: #f2f4f7; padding: 20px;
@@ -49,25 +49,24 @@
   }
   .pin-error { color: var(--red); font-size: 13px; margin-top: 10px; display: none; }
 
-  /* ── HEADER ── */
+  /* HEADER */
   header {
     background: linear-gradient(135deg, #1a3a5c, #2d6a9f);
-    color: white; padding: 16px 20px 14px;
+    color: white; padding: 14px 20px;
     position: sticky; top: 0; z-index: 10;
     display: flex; justify-content: space-between; align-items: center;
   }
-  header h1 { font-size: 17px; font-weight: 700; }
-  header p { font-size: 12px; opacity: 0.7; margin-top: 2px; }
+  header h1 { font-size: 16px; font-weight: 700; }
+  header p { font-size: 11px; opacity: 0.7; margin-top: 1px; }
   .hbtn {
     background: rgba(255,255,255,0.15); border: none; color: white;
-    padding: 7px 14px; border-radius: 6px; font-size: 12px;
-    font-weight: 600; cursor: pointer;
+    padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;
   }
 
-  /* ── BODY ── */
+  /* BODY */
   .body { padding: 16px; max-width: 480px; margin: 0 auto; }
 
-  /* ── TABS ── */
+  /* TABS */
   .tabs {
     display: flex; background: white; border-radius: var(--radius);
     border: 1px solid var(--border); margin-bottom: 16px; overflow: hidden;
@@ -79,91 +78,107 @@
   }
   .tab.active { color: var(--blue); border-bottom-color: var(--blue); background: #e8f0f8; }
 
-  /* ── FORM CARDS ── */
+  /* CARDS */
   .card {
     background: white; border-radius: var(--radius);
     border: 1px solid var(--border); margin-bottom: 14px; overflow: hidden;
   }
   .card-head {
-    background: linear-gradient(135deg, #e8f0f8, #d0e4f5);
-    padding: 10px 16px; font-size: 11px; font-weight: 700;
+    background: linear-gradient(135deg, #e8f0f8, #d4e8f5);
+    padding: 9px 16px; font-size: 11px; font-weight: 700;
     color: var(--blue); text-transform: uppercase; letter-spacing: 0.6px;
     border-bottom: 1px solid #cfe0f0;
   }
   .card-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
+
+  /* FIELDS */
   .field { display: flex; flex-direction: column; gap: 5px; }
   .field label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
-  .field input, .field select {
-    padding: 11px 13px; border: 1px solid #ccc; border-radius: 8px;
+  .field input, .field select, .field textarea {
+    padding: 10px 13px; border: 1px solid #ccc; border-radius: 8px;
     font-size: 15px; color: #1a1a1a; background: white;
     -webkit-appearance: none; appearance: none; width: 100%;
+    font-family: inherit;
   }
-  .field input:focus, .field select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(26,58,92,0.1); }
+  .field textarea { resize: vertical; min-height: 72px; line-height: 1.5; }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none; border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(26,58,92,0.1);
+  }
   .field select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat; background-position: right 13px center; padding-right: 36px;
   }
   .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
-  /* ── PLACE AUTOCOMPLETE ── */
-  .autocomplete-wrap { position: relative; }
-  .autocomplete-list {
-    position: absolute; top: 100%; left: 0; right: 0;
-    background: white; border: 1px solid var(--blue);
-    border-radius: 8px; z-index: 100; max-height: 200px;
-    overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  /* AUTOCOMPLETE */
+  .ac-wrap { position: relative; }
+  .ac-list {
+    position: absolute; top: 100%; left: 0; right: 0; z-index: 100;
+    background: white; border: 1px solid #ccc; border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12); max-height: 200px; overflow-y: auto;
   }
-  .autocomplete-item {
+  .ac-item {
     padding: 10px 13px; font-size: 14px; cursor: pointer;
+    display: flex; justify-content: space-between;
     border-bottom: 1px solid #f0f0f0;
-    display: flex; justify-content: space-between; align-items: center;
   }
-  .autocomplete-item:last-child { border-bottom: none; }
-  .autocomplete-item:active { background: #e8f0f8; }
-  .autocomplete-pin { font-size: 12px; color: var(--muted); }
+  .ac-item:last-child { border-bottom: none; }
+  .ac-item:active, .ac-item:hover { background: #e8f0f8; }
+  .ac-pin { font-size: 12px; color: var(--muted); }
 
-  /* ── SUMMARY ── */
-  .calc-card {
-    background: linear-gradient(135deg, #e6f4ed, #d0eadc);
-    border: 1px solid #b0d9c0; border-radius: var(--radius);
+  /* SUMMARY */
+  .summary-card {
+    background: white; border: 1px solid #b0d9c0; border-radius: var(--radius);
     padding: 14px 16px; margin-bottom: 14px;
   }
-  .calc-heading { font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 10px; }
-  .calc-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 14px; border-bottom: 1px solid #cde8d8; }
-  .calc-row:last-child { border: none; font-size: 15px; font-weight: 700; color: var(--green); padding-top: 8px; }
+  .summary-head { font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .summary-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 14px; border-bottom: 1px solid #e0f0e8; }
+  .summary-row:last-child { border: none; font-size: 15px; font-weight: 700; color: var(--green); padding-top: 8px; }
 
-  /* ── WORDS ── */
-  .words-card {
-    background: linear-gradient(135deg, #fffbe6, #fff8d0);
-    border: 1px solid #e6d400; border-radius: var(--radius);
+  /* WORDS */
+  .words-box {
+    background: #fffbe6; border: 1px solid #e6d400; border-radius: var(--radius);
     padding: 12px 16px; margin-bottom: 16px;
   }
-  .wlabel { font-size: 11px; font-weight: 700; color: #7a6000; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-  .wtext { font-size: 13px; color: #3d3000; font-style: italic; font-weight: 500; line-height: 1.4; }
+  .words-label { font-size: 11px; font-weight: 700; color: #7a6000; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
+  .words-text { font-size: 13px; color: #3d3000; font-style: italic; font-weight: 500; line-height: 1.5; }
 
-  /* ── BUTTONS ── */
-  .btn-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
-  .btn { width: 100%; padding: 14px; border-radius: var(--radius); border: none; font-size: 16px; font-weight: 700; cursor: pointer; }
-  .btn-primary { background: linear-gradient(135deg, #1a3a5c, #2d6a9f); color: white; }
-  .btn-secondary { background: white; color: var(--blue); border: 1.5px solid var(--blue); }
-  .btn-ghost { background: #eee; color: #555; }
-
-  /* ── HISTORY ── */
-  .inv-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
-  .inv-item {
-    background: white; border-radius: var(--radius); border: 1px solid var(--border);
-    padding: 14px 16px; cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center;
+  /* BUTTONS */
+  .btn-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .btn {
+    width: 100%; padding: 14px; border-radius: var(--radius);
+    border: none; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
   }
-  .inv-item:active { background: #e8f0f8; }
-  .inv-item-no { font-size: 14px; font-weight: 700; color: var(--blue); }
-  .inv-item-name { font-size: 13px; color: var(--muted); margin-top: 2px; }
-  .inv-item-date { font-size: 12px; color: #999; margin-top: 2px; }
-  .inv-item-amount { font-size: 15px; font-weight: 700; color: var(--green); }
-  .empty-state { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; }
-  .loading { text-align: center; padding: 20px; color: var(--muted); font-size: 14px; }
+  .btn-primary { background: linear-gradient(135deg, #1a3a5c, #2d6a9f); color: white; }
+  .btn-outline { background: white; color: var(--blue); border: 1.5px solid var(--blue); }
+  .btn-ghost { background: #eee; color: #555; }
+  .btn-sm {
+    padding: 7px 14px; font-size: 12px; font-weight: 600; border-radius: 6px;
+    border: none; cursor: pointer; font-family: inherit;
+  }
+  .btn-edit { background: #e8f0f8; color: #1a3a5c; }
+  .btn-del { background: #fdecea; color: #c0392b; }
 
-  /* ── TOAST ── */
+  /* HISTORY LIST */
+  .hist-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+  .hist-item {
+    background: white; border-radius: var(--radius); border: 1px solid var(--border);
+    padding: 13px 16px;
+  }
+  .hist-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .hist-no { font-size: 14px; font-weight: 700; color: var(--blue); }
+  .hist-amt { font-size: 15px; font-weight: 700; color: var(--green); }
+  .hist-name { font-size: 13px; color: #333; margin-bottom: 2px; }
+  .hist-meta { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .hist-actions { display: flex; gap: 8px; }
+  .hist-toolbar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px;
+  }
+  .hist-count { font-size: 13px; color: var(--muted); }
+
+  /* TOAST */
   .toast {
     position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
     background: #1a1a1a; color: white; padding: 10px 20px;
@@ -172,134 +187,118 @@
   }
   .toast.show { opacity: 1; }
 
-  /* ── PRINT VIEW (screen) ── */
+  .empty { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; }
+  .loading-msg { text-align: center; padding: 20px; color: var(--muted); font-size: 14px; }
+
+  /* ═══════════════════════════════════════
+     A4 INVOICE — screen preview
+  ═══════════════════════════════════════ */
   #print-view { display: none; margin-bottom: 24px; }
 
-  /* ════════════════════════════════════════
-     A4 INVOICE STYLES — screen preview
-  ════════════════════════════════════════ */
-  .a4-preview {
+  .a4 {
     background: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
     overflow: hidden;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #111;
   }
-  .a4-header {
-    background: linear-gradient(135deg, #1a3a5c 0%, #2d6a9f 100%);
-    color: white;
-    padding: 14px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .a4-header-left h2 { font-size: 18px; font-weight: 700; letter-spacing: 1px; margin-bottom: 2px; }
-  .a4-header-left p { font-size: 11px; opacity: 0.8; }
-  .a4-header-right { text-align: right; font-size: 11px; opacity: 0.9; line-height: 1.6; }
 
+  /* Header band — very light */
+  .a4-band {
+    background: linear-gradient(135deg, #f0f5fa 0%, #e4eef7 100%);
+    border-bottom: 2px solid #1a3a5c;
+    padding: 10px 16px;
+    text-align: center;
+  }
+  .a4-band-title {
+    font-size: 15px; font-weight: 800;
+    color: #1a3a5c; letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  /* Two column meta */
   .a4-meta {
     display: grid; grid-template-columns: 1fr 1fr;
-    border-bottom: 2px solid #1a3a5c;
+    border-bottom: 1.5px solid #1a3a5c;
   }
-  .a4-consignee {
-    padding: 12px 16px;
-    border-right: 1px solid #ddd;
+  .a4-col {
+    padding: 10px 14px;
   }
-  .a4-invoice-info { padding: 12px 16px; }
-  .a4-section-label {
+  .a4-col:first-child { border-right: 1px solid #ccc; }
+  .a4-col-title {
     font-size: 9px; font-weight: 700; text-transform: uppercase;
     letter-spacing: 0.8px; color: #2d6a9f; margin-bottom: 6px;
-    font-family: -apple-system, sans-serif;
   }
-  .a4-consignee-name { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
-  .a4-consignee-addr { font-size: 11px; color: #333; line-height: 1.6; }
-  .a4-consignee-gst { font-size: 10px; color: #555; margin-top: 5px; }
+  .a4-co-name { font-size: 13px; font-weight: 700; margin-bottom: 3px; color: #111; }
+  .a4-co-addr { font-size: 11px; color: #222; line-height: 1.6; }
+  .a4-co-gst { font-size: 11px; color: #111; margin-top: 5px; font-weight: 600; }
 
-  .a4-info-row {
-    display: flex; justify-content: space-between;
-    font-size: 11px; padding: 2px 0;
-    border-bottom: 1px dotted #e0e0e0;
+  /* Info strip */
+  .a4-info-strip {
+    display: flex; gap: 0;
+    border-bottom: 1.5px solid #1a3a5c;
+    background: #f8fafc;
   }
-  .a4-info-row:last-child { border-bottom: none; }
-  .a4-info-label { color: #666; font-family: -apple-system, sans-serif; }
-  .a4-info-value { font-weight: 600; text-align: right; max-width: 55%; font-family: -apple-system, sans-serif; }
+  .a4-info-cell {
+    flex: 1; padding: 7px 14px;
+    border-right: 1px solid #ddd;
+    font-size: 11px;
+  }
+  .a4-info-cell:last-child { border-right: none; }
+  .a4-info-cell-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 2px; }
+  .a4-info-cell-value { font-weight: 700; color: #111; font-size: 12px; }
 
-  .a4-table-wrap { padding: 0 16px 0; }
-  .a4-table {
-    width: 100%; border-collapse: collapse;
-    font-size: 12px; margin: 12px 0;
-    font-family: -apple-system, sans-serif;
-  }
+  /* Table */
+  .a4-table-wrap { padding: 0 14px; }
+  .a4-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12px; }
   .a4-table th {
-    background: linear-gradient(135deg, #1a3a5c, #2d6a9f);
-    color: white; padding: 8px 10px; text-align: center;
-    font-size: 11px; font-weight: 600;
+    background: #1a3a5c; color: white;
+    padding: 7px 10px; font-size: 11px; font-weight: 600;
+    text-align: center;
   }
-  .a4-table th.tl { text-align: left; }
-  .a4-table td { padding: 9px 10px; border-bottom: 1px solid #eee; text-align: center; font-size: 12px; }
-  .a4-table td.tl { text-align: left; }
-  .a4-table tbody tr:nth-child(even) { background: #f8f8f8; }
+  .a4-table th.tl, .a4-table td.tl { text-align: left; }
+  .a4-table td {
+    padding: 9px 10px; border-bottom: 1px solid #eee;
+    text-align: center; color: #111;
+  }
   .a4-table tfoot td {
     border-top: 2px solid #1a3a5c; border-bottom: none;
-    font-weight: 700; font-size: 13px; background: #f0f5ff;
+    font-weight: 700; font-size: 13px; background: #f0f5fa;
   }
 
-  .a4-footer {
-    margin: 0 16px 16px;
-    border: 1px solid #ddd; border-radius: 6px; overflow: hidden;
+  /* Footer */
+  .a4-footer { margin: 0 14px 14px; border: 1px solid #ddd; border-radius: 4px; overflow: hidden; }
+  .a4-words-row {
+    background: linear-gradient(135deg, #fffbe6, #fff8cc);
+    padding: 9px 14px; border-bottom: 1px solid #e6d400;
   }
-  .a4-words {
-    background: linear-gradient(135deg, #fffbe6, #fff8d0);
-    padding: 10px 14px; border-bottom: 1px solid #e6d400;
-  }
-  .a4-words-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #7a6000; font-family: -apple-system, sans-serif; margin-bottom: 3px; }
-  .a4-words-text { font-size: 12px; color: #3d3000; font-style: italic; font-weight: 600; font-family: -apple-system, sans-serif; }
-
+  .a4-words-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: #7a6000; margin-bottom: 2px; }
+  .a4-words-text { font-size: 12px; font-weight: 600; color: #111; }
   .a4-sign-row {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    padding: 12px 14px; background: white;
+    display: flex; justify-content: flex-end;
+    padding: 10px 14px; background: white;
   }
-  .a4-sign-left { font-size: 10px; color: #888; font-family: -apple-system, sans-serif; }
-  .a4-sign-right { text-align: right; font-family: -apple-system, sans-serif; }
   .a4-sign-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 3px; }
-  .a4-sign-name { font-size: 13px; font-weight: 700; color: var(--blue); }
+  .a4-sign-name { font-size: 13px; font-weight: 700; color: #1a3a5c; }
 
-  /* ════════════════════════════════════════
-     PRINT STYLES — exact A4
-  ════════════════════════════════════════ */
+  /* ═══════════════════════════════════════
+     PRINT — A4 exact
+  ═══════════════════════════════════════ */
   @media print {
     @page { size: A4 portrait; margin: 10mm 12mm; }
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
     body { background: white; }
-    header, #pin-screen, .tabs, #form-tab .card,
-    .calc-card, .words-card, .btn-stack,
-    #history-tab, .toast { display: none !important; }
+    header, .tabs, #form-section, #history-section { display: none !important; }
+    #print-area { display: block !important; }
 
-    .body { padding: 0; max-width: none; }
-    #print-view { display: block !important; margin: 0; }
-
-    .a4-preview {
-      border: none; border-radius: 0;
-      width: 100%; box-shadow: none;
+    .a4 {
+      border: none;
+      width: 100%;
     }
-    .a4-header { padding: 12mm 14mm 10mm; }
-    .a4-header-left h2 { font-size: 22px; }
-    .a4-meta { border-bottom: 2px solid #1a3a5c; }
-    .a4-consignee, .a4-invoice-info { padding: 8mm 14mm; }
-    .a4-table-wrap { padding: 0 14mm; }
-    .a4-table { margin: 6mm 0; }
-    .a4-table th { font-size: 12px; padding: 7px 10px; }
-    .a4-table td { font-size: 13px; padding: 8px 10px; }
-    .a4-table tfoot td { font-size: 14px; }
-    .a4-footer { margin: 0 14mm 10mm; }
-    .a4-words { padding: 8px 14px; }
-    .a4-words-text { font-size: 13px; }
-    .a4-sign-row { padding: 10px 14px; }
-    .a4-consignee-name { font-size: 16px; }
-    .a4-consignee-addr { font-size: 12px; }
-    .a4-info-row { font-size: 12px; padding: 3px 0; }
-    .a4-info-value { font-size: 12px; }
+    .a4-band { background: #e8f0f8 !important; }
   }
 </style>
 </head>
@@ -309,20 +308,20 @@
 <div id="pin-screen">
   <div class="pin-card">
     <div class="pin-logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
     </div>
-    <h2>Regal Plastics</h2>
-    <p>URP Purchase · Enter PIN to continue</p>
-    <input type="password" class="pin-input" id="pinInput" placeholder="••••" inputmode="numeric" maxlength="6" />
+    <h2 style="font-size:18px;font-weight:700;color:#1a3a5c;margin-bottom:4px;">Regal Plastics</h2>
+    <p style="font-size:13px;color:#888;margin-bottom:24px;">URP Purchase System</p>
+    <input type="password" class="pin-input" id="pinInput" placeholder="• • • •" inputmode="numeric" maxlength="6" />
     <button type="button" class="pin-btn" onclick="doLogin()">Unlock</button>
     <div class="pin-error" id="pinError">Incorrect PIN. Try again.</div>
   </div>
 </div>
 
 <!-- MAIN APP -->
-<div id="main-app" style="display:none">
+<div id="app" style="display:none">
   <header>
     <div>
       <h1>URP Purchase</h1>
@@ -332,13 +331,15 @@
   </header>
 
   <div class="body">
+
+    <!-- TABS -->
     <div class="tabs">
-      <button type="button" class="tab active" onclick="showTab('form')" id="tab-form">New Invoice</button>
-      <button type="button" class="tab" onclick="showTab('history')" id="tab-history">History</button>
+      <button type="button" class="tab active" id="tab-new" onclick="showTab('new')">New Invoice</button>
+      <button type="button" class="tab" id="tab-hist" onclick="showTab('hist')">History</button>
     </div>
 
-    <!-- FORM TAB -->
-    <div id="form-tab">
+    <!-- ── NEW INVOICE ── -->
+    <div id="sec-new">
 
       <div class="card">
         <div class="card-head">Invoice Details</div>
@@ -346,29 +347,37 @@
           <div class="row2">
             <div class="field">
               <label>Invoice No</label>
-              <input type="text" id="invoiceNo" readonly style="background:#f5f5f5;color:#666;" />
+              <input type="text" id="invoiceNo" readonly style="background:#f5f5f5;color:#777;" />
             </div>
             <div class="field">
               <label>Date</label>
               <input type="date" id="invoiceDate" />
             </div>
           </div>
+          <div class="field">
+            <label>Vehicle Number</label>
+            <input type="text" id="vehicleNo" placeholder="KA65 1189" />
+          </div>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-head">Consignor / Supplier</div>
+        <div class="card-head">Consignor</div>
         <div class="card-body">
           <div class="field">
             <label>Name</label>
-            <input type="text" id="consignorName" placeholder="Supplier or party name" />
+            <input type="text" id="consignorName" placeholder="Party / Supplier name" />
+          </div>
+          <div class="field">
+            <label>Address (optional)</label>
+            <textarea id="consignorAddress" placeholder="Plot No, Street&#10;Area / Locality"></textarea>
           </div>
           <div class="row2">
             <div class="field">
               <label>Place</label>
-              <div class="autocomplete-wrap">
+              <div class="ac-wrap" style="position:relative">
                 <input type="text" id="placeInput" placeholder="Type city..." autocomplete="off" oninput="filterPlaces()" />
-                <div class="autocomplete-list" id="placeList" style="display:none"></div>
+                <div class="ac-list" id="acList" style="display:none"></div>
               </div>
             </div>
             <div class="field">
@@ -376,9 +385,15 @@
               <input type="text" id="pinCode" placeholder="Auto-filled" inputmode="numeric" maxlength="6" />
             </div>
           </div>
-          <div class="field">
-            <label>Vehicle Number</label>
-            <input type="text" id="vehicleNo" placeholder="KA65 1189" style="text-transform:uppercase" />
+          <div class="row2">
+            <div class="field">
+              <label>State</label>
+              <input type="text" id="stateName" value="Karnataka" />
+            </div>
+            <div class="field">
+              <label>State Code</label>
+              <input type="text" id="stateCode" value="29" />
+            </div>
           </div>
         </div>
       </div>
@@ -397,12 +412,12 @@
               <option value="Custom">Custom...</option>
             </select>
           </div>
-          <div class="field" id="customDescGroup" style="display:none">
+          <div class="field" id="customDescWrap" style="display:none">
             <label>Custom Description</label>
             <input type="text" id="customDesc" placeholder="Enter description" />
           </div>
           <div class="field">
-            <label>HSN / SAC Code</label>
+            <label>HSN Code</label>
             <select id="hsnCode">
               <option value="3915">3915 — Waste / Scrap of Plastics</option>
               <option value="3916">3916 — Monofilaments of Plastics</option>
@@ -423,103 +438,102 @@
         </div>
       </div>
 
-      <div class="calc-card">
-        <div class="calc-heading">Summary</div>
-        <div class="calc-row"><span>Quantity</span><span id="s-qty">0 Kgs</span></div>
-        <div class="calc-row"><span>Rate</span><span id="s-rate">₹ 8.00 / Kg</span></div>
-        <div class="calc-row"><span>Total</span><span id="s-total">₹ 0.00</span></div>
+      <div class="summary-card">
+        <div class="summary-head">Summary</div>
+        <div class="summary-row"><span>Quantity</span><span id="s-qty">0 Kgs</span></div>
+        <div class="summary-row"><span>Rate</span><span id="s-rate">₹ 8.00 / Kg</span></div>
+        <div class="summary-row"><span>Total</span><span id="s-total">₹ 0.00</span></div>
       </div>
 
-      <div class="words-card">
-        <div class="wlabel">Amount in Words</div>
-        <div class="wtext" id="amountWords">—</div>
+      <div class="words-box">
+        <div class="words-label">Amount in Words</div>
+        <div class="words-text" id="amountWords">—</div>
       </div>
 
       <div class="btn-stack">
         <button type="button" class="btn btn-primary" onclick="generateInvoice()">Generate &amp; Save Invoice</button>
-        <button type="button" class="btn btn-secondary" onclick="printCurrent()">Print / Save as PDF</button>
-        <button type="button" class="btn btn-ghost" onclick="resetForm()">Reset Form</button>
+        <button type="button" class="btn btn-outline" onclick="printInvoice()" style="background:white;color:var(--blue);border:1.5px solid var(--blue)">Print / Save as PDF</button>
+        <button type="button" class="btn btn-ghost" onclick="resetForm()" style="background:#eee;color:#555">Reset Form</button>
       </div>
 
-      <!-- A4 INVOICE PREVIEW -->
+      <!-- A4 PREVIEW -->
       <div id="print-view">
-        <div class="a4-preview">
-          <div class="a4-header">
-            <div class="a4-header-left">
-              <h2>URP PURCHASE</h2>
-              <p>Unregistered Person Purchase Invoice</p>
-            </div>
-            <div class="a4-header-right">
-              <div id="h-invno" style="font-size:13px;font-weight:700;"></div>
-              <div id="h-date"></div>
-            </div>
+        <div class="a4">
+          <!-- band -->
+          <div class="a4-band">
+            <div class="a4-band-title">URP PURCHASE</div>
           </div>
-
+          <!-- meta -->
           <div class="a4-meta">
-            <div class="a4-consignee">
-              <div class="a4-section-label">Consignee</div>
-              <div class="a4-consignee-name">Regal Plastics</div>
-              <div class="a4-consignee-addr">
-                Survey No 68, Plot No 65-G3<br>
-                Tarihal Industrial Area<br>
-                Hubballi, Dharwad — 580026<br>
-                Karnataka
-              </div>
-              <div class="a4-consignee-gst">
-                GST: 29AEFPT1601P1Z3 &nbsp;|&nbsp; State Code: 29
-              </div>
+            <div class="a4-col">
+              <div class="a4-col-title">Consignee</div>
+              <div class="a4-co-name">Regal Plastics</div>
+              <div class="a4-co-addr">Survey No 68, Plot No 65-G3<br>Tarihal Industrial Area<br>Hubballi, Dharwad — 580026<br>Karnataka</div>
+              <div class="a4-co-gst">GST: 29AEFPT1601P1Z3 &nbsp;|&nbsp; State Code: 29</div>
             </div>
-            <div class="a4-invoice-info">
-              <div class="a4-section-label">Supplier Details</div>
-              <div class="a4-info-row"><span class="a4-info-label">Consignor</span><span class="a4-info-value" id="p-consignor">—</span></div>
-              <div class="a4-info-row"><span class="a4-info-label">Place</span><span class="a4-info-value" id="p-place">—</span></div>
-              <div class="a4-info-row"><span class="a4-info-label">Pin Code</span><span class="a4-info-value" id="p-pin">—</span></div>
-              <div class="a4-info-row"><span class="a4-info-label">Vehicle No</span><span class="a4-info-value" id="p-vehicle">—</span></div>
-              <div class="a4-info-row"><span class="a4-info-label">Suppliers Ref</span><span class="a4-info-value">—</span></div>
+            <div class="a4-col" style="border-left:1px solid #ccc">
+              <div class="a4-col-title">Consignor</div>
+              <div class="a4-co-name" id="p-name"></div>
+              <div class="a4-co-addr" id="p-addr"></div>
+              <div class="a4-co-gst" id="p-gst"></div>
             </div>
           </div>
-
+          <!-- info strip -->
+          <div class="a4-info-strip">
+            <div class="a4-info-cell">
+              <div class="a4-info-cell-label">Invoice Number</div>
+              <div class="a4-info-cell-value" id="p-invno"></div>
+            </div>
+            <div class="a4-info-cell">
+              <div class="a4-info-cell-label">Date</div>
+              <div class="a4-info-cell-value" id="p-date"></div>
+            </div>
+            <div class="a4-info-cell">
+              <div class="a4-info-cell-label">Vehicle No</div>
+              <div class="a4-info-cell-value" id="p-veh"></div>
+            </div>
+          </div>
+          <!-- table -->
           <div class="a4-table-wrap">
             <table class="a4-table">
               <thead>
                 <tr>
-                  <th style="width:32px">#</th>
+                  <th style="width:28px">#</th>
                   <th class="tl">Description of Goods</th>
-                  <th style="width:52px">HSN</th>
+                  <th style="width:56px">HSN</th>
                   <th style="width:72px">Qty (Kg)</th>
                   <th style="width:64px">Rate/Kg</th>
-                  <th style="width:88px">Amount (₹)</th>
+                  <th style="width:90px">Amount (₹)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td class="tl" id="p-desc">—</td>
-                  <td id="p-hsn">—</td>
-                  <td id="p-qty">—</td>
-                  <td id="p-rate">—</td>
-                  <td id="p-amount">—</td>
+                  <td class="tl" id="p-desc"></td>
+                  <td id="p-hsn"></td>
+                  <td id="p-qty"></td>
+                  <td id="p-rate"></td>
+                  <td id="p-amt"></td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
-                  <td colspan="3" style="text-align:right;font-size:11px;letter-spacing:0.5px;">TOTAL</td>
-                  <td id="p-total-qty">—</td>
+                  <td colspan="3" style="text-align:right;font-size:10px;letter-spacing:1px;color:#555">TOTAL</td>
+                  <td id="p-tqty"></td>
                   <td></td>
-                  <td id="p-total-amount">—</td>
+                  <td id="p-tamt"></td>
                 </tr>
               </tfoot>
             </table>
           </div>
-
+          <!-- footer -->
           <div class="a4-footer">
-            <div class="a4-words">
+            <div class="a4-words-row">
               <div class="a4-words-label">Amount in Words</div>
-              <div class="a4-words-text" id="p-words">—</div>
+              <div class="a4-words-text" id="p-words"></div>
             </div>
             <div class="a4-sign-row">
-              <div class="a4-sign-left">Generated via Regal Plastics URP System</div>
-              <div class="a4-sign-right">
+              <div style="text-align:right">
                 <div class="a4-sign-label">Authorised Signatory</div>
                 <div class="a4-sign-name">Regal Plastics</div>
               </div>
@@ -528,348 +542,415 @@
         </div>
       </div>
 
-    </div><!-- /form-tab -->
+    </div><!-- /sec-new -->
 
-    <!-- HISTORY TAB -->
-    <div id="history-tab" style="display:none">
-      <div id="history-list" class="inv-list">
-        <div class="loading">Loading invoices...</div>
+    <!-- ── HISTORY ── -->
+    <div id="sec-hist" style="display:none">
+      <div class="hist-toolbar">
+        <div class="hist-count" id="hist-count"></div>
+        <button type="button" class="btn-sm btn-edit" onclick="downloadCSV()">⬇ Download All CSV</button>
+      </div>
+      <div class="hist-list" id="hist-list">
+        <div class="loading-msg">Loading...</div>
       </div>
     </div>
 
-  </div>
-</div>
+  </div><!-- /body -->
+</div><!-- /app -->
 
 <div class="toast" id="toast"></div>
 
 <script>
 const API = 'https://regal-urp-backend.onrender.com';
 
-// ── KARNATAKA PLACES ─────────────────────────────────────
-const KA_PLACES = [
-  {name:'Hubballi',pin:'580026'},
-  {name:'Gadag',pin:'582102'},
-  {name:'Dandeli',pin:'581325'},
-  {name:'Sirsi',pin:'581401'},
-  {name:'Koppal',pin:'583231'},
-  {name:'Hole Alur, Gadag',pin:'582102'},
-  {name:'Karwar',pin:'581301'},
-  {name:'Mundgod',pin:'581349'},
-  {name:'Navalgundu',pin:'582208'},
-  {name:'Belur Cross',pin:'587114'},
-  {name:'Navalgunte',pin:'580026'},
-  {name:'Mirjan',pin:'581440'},
-  {name:'Dharwad',pin:'580001'},
-  {name:'Bengaluru',pin:'560001'},
-  {name:'Mysuru',pin:'570001'},
-  {name:'Mangaluru',pin:'575001'},
-  {name:'Belagavi',pin:'590001'},
-  {name:'Davangere',pin:'577001'},
-  {name:'Ballari',pin:'583101'},
-  {name:'Shivamogga',pin:'577201'},
-  {name:'Tumakuru',pin:'572101'},
-  {name:'Raichur',pin:'584101'},
-  {name:'Bidar',pin:'585401'},
-  {name:'Vijayapura',pin:'586101'},
-  {name:'Kalaburagi',pin:'585101'},
-  {name:'Hassan',pin:'573201'},
-  {name:'Mandya',pin:'571401'},
-  {name:'Udupi',pin:'576101'},
-  {name:'Chikkamagaluru',pin:'577101'},
-  {name:'Kolar',pin:'563101'},
-  {name:'Haveri',pin:'581110'},
-  {name:'Bagalkot',pin:'587101'},
-  {name:'Chitradurga',pin:'577501'},
-  {name:'Hospet',pin:'583201'},
-  {name:'Gangavathi',pin:'583227'},
-  {name:'Bhadravati',pin:'577301'},
-  {name:'Nanjangud',pin:'571301'},
-  {name:'Gokak',pin:'591307'},
-  {name:'Mudhol',pin:'587313'},
-  {name:'Saundatti',pin:'591126'},
-  {name:'Ankola',pin:'581314'},
-  {name:'Kumta',pin:'581343'},
-  {name:'Honnavar',pin:'581334'},
-  {name:'Bhatkal',pin:'581320'},
-  {name:'Puttur',pin:'574201'},
-  {name:'Sullia',pin:'574239'},
-  {name:'Madikeri',pin:'571201'},
-  {name:'Sagara',pin:'577401'},
-  {name:'Ranebennur',pin:'581115'},
-  {name:'Haveri',pin:'581110'},
-  {name:'Shiggaon',pin:'581205'},
-  {name:'Kundgol',pin:'582113'},
-  {name:'Nargund',pin:'582207'},
-  {name:'Ron',pin:'582209'},
-  {name:'Shirahatti',pin:'582120'},
-  {name:'Sindhanur',pin:'584128'},
-  {name:'Manvi',pin:'584123'},
-  {name:'Lingasugur',pin:'584122'},
-  {name:'Badami',pin:'587201'},
-  {name:'Jamkhandi',pin:'587301'},
-  {name:'Nippani',pin:'591237'},
-  {name:'Chikodi',pin:'591201'},
-  {name:'Athani',pin:'591304'},
-  {name:'Bailhongal',pin:'591102'},
-  {name:'Kalghatgi',pin:'580067'},
-  {name:'Alnavar',pin:'581103'},
-  {name:'Yellapur',pin:'581359'},
-  {name:'Haliyal',pin:'581329'},
-  {name:'Joida',pin:'581186'},
-  {name:'Karkal',pin:'574104'},
-  {name:'Bantval',pin:'574219'},
-  {name:'Belthangady',pin:'574214'},
-  {name:'Moodbidri',pin:'574227'},
-  {name:'Kundapur',pin:'576201'},
-  {name:'Byndoor',pin:'576214'},
-  {name:'Holenarasipur',pin:'573211'},
-  {name:'Arsikere',pin:'573103'},
-  {name:'Tarikere',pin:'574227'},
-  {name:'Chikkaballapur',pin:'562101'},
-  {name:'Ramanagara',pin:'562159'},
-  {name:'Robertsonpet',pin:'563122'},
-  {name:'Virajpet',pin:'571218'},
-  {name:'Tirthahalli',pin:'577432'},
+/* ── PLACES ── */
+const PLACES = [
+  {n:'Hubballi',p:'580026'},{n:'Gadag',p:'582102'},
+  {n:'Dandeli',p:'581325'},{n:'Sirsi',p:'581401'},
+  {n:'Koppal',p:'583231'},{n:'Hole Alur',p:'582102'},
+  {n:'Karwar',p:'581301'},{n:'Mundgod',p:'581349'},
+  {n:'Dharwad',p:'580001'},{n:'Bengaluru',p:'560001'},
+  {n:'Mysuru',p:'570001'},{n:'Belagavi',p:'590001'},
+  {n:'Davangere',p:'577001'},{n:'Shivamogga',p:'577201'},
+  {n:'Tumakuru',p:'572101'},{n:'Raichur',p:'584101'},
+  {n:'Bidar',p:'585401'},{n:'Vijayapura',p:'586101'},
+  {n:'Kalaburagi',p:'585101'},{n:'Hassan',p:'573201'},
+  {n:'Mangaluru',p:'575001'},{n:'Udupi',p:'576101'},
+  {n:'Chitradurga',p:'577501'},{n:'Haveri',p:'581110'},
+  {n:'Bagalkot',p:'587101'},{n:'Ranebennur',p:'581115'},
+  {n:'Byadgi',p:'581106'},{n:'Savanur',p:'581118'},
+  {n:'Shiggaon',p:'581205'},{n:'Kundgol',p:'582113'},
+  {n:'Nargund',p:'582207'},{n:'Ron',p:'582209'},
+  {n:'Navalgundu',p:'582208'},{n:'Navalgunte',p:'580026'},
+  {n:'Belur Cross',p:'587114'},{n:'Mirjan',p:'581440'},
+  {n:'Ankola',p:'581314'},{n:'Kumta',p:'581343'},
+  {n:'Honnavar',p:'581334'},{n:'Bhatkal',p:'581320'},
+  {n:'Yellapur',p:'581359'},{n:'Haliyal',p:'581329'},
+  {n:'Joida',p:'581186'},{n:'Karkal',p:'574104'},
+  {n:'Bantval',p:'574219'},{n:'Puttur',p:'574201'},
+  {n:'Sullia',p:'574239'},{n:'Madikeri',p:'571201'},
+  {n:'Sagara',p:'577401'},{n:'Tirthahalli',p:'577432'},
+  {n:'Badami',p:'587201'},{n:'Pattadakal',p:'587117'},
+  {n:'Hospet',p:'583201'},{n:'Gangavathi',p:'583227'},
+  {n:'Sindhanur',p:'584128'},{n:'Manvi',p:'584123'},
+  {n:'Lingasugur',p:'584122'},{n:'Devadurga',p:'584111'},
+  {n:'Muddebihal',p:'587313'},{n:'Indi',p:'586209'},
+  {n:'Gokak',p:'591307'},{n:'Chikodi',p:'591201'},
+  {n:'Athani',p:'591304'},{n:'Nippani',p:'591237'},
 ];
 
 function filterPlaces() {
   const val = document.getElementById('placeInput').value.trim().toLowerCase();
-  const list = document.getElementById('placeList');
+  const list = document.getElementById('acList');
   if (val.length < 2) { list.style.display = 'none'; return; }
-  const matches = KA_PLACES.filter(p => p.name.toLowerCase().includes(val)).slice(0, 8);
+  const matches = PLACES.filter(p => p.n.toLowerCase().includes(val));
   if (!matches.length) { list.style.display = 'none'; return; }
-  list.innerHTML = matches.map(p => `
-    <div class="autocomplete-item" onclick="selectPlace('${p.name}','${p.pin}')">
-      <span>${p.name}</span>
-      <span class="autocomplete-pin">${p.pin}</span>
-    </div>
-  `).join('');
+  list.innerHTML = matches.slice(0, 8).map(p =>
+    `<div class="ac-item" onclick="selectPlace('${p.n}','${p.p}')">${p.n} <span class="ac-pin">${p.p}</span></div>`
+  ).join('');
   list.style.display = 'block';
 }
 
 function selectPlace(name, pin) {
   document.getElementById('placeInput').value = name;
   document.getElementById('pinCode').value = pin;
-  document.getElementById('placeList').style.display = 'none';
+  document.getElementById('acList').style.display = 'none';
 }
 
 document.addEventListener('click', e => {
-  if (!e.target.closest('.autocomplete-wrap')) {
-    document.getElementById('placeList').style.display = 'none';
-  }
+  if (!e.target.closest('.ac-wrap')) document.getElementById('acList') && (document.getElementById('acList').style.display = 'none');
 });
 
-// ── WORDS ────────────────────────────────────────────────
-const ones = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine',
-  'Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
-const tens = ['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
-function n2w(n) {
-  n = Math.round(n); if (n === 0) return 'Zero';
-  let w = '';
-  if (n >= 10000000) { w += n2w(Math.floor(n/10000000)) + ' Crore '; n %= 10000000; }
-  if (n >= 100000)   { w += n2w(Math.floor(n/100000))   + ' Lakh ';  n %= 100000; }
-  if (n >= 1000)     { w += n2w(Math.floor(n/1000))     + ' Thousand '; n %= 1000; }
-  if (n >= 100)      { w += ones[Math.floor(n/100)]     + ' Hundred '; n %= 100; }
-  if (n >= 20)       { w += tens[Math.floor(n/10)] + (n%10?' '+ones[n%10]:'') + ' '; }
-  else if (n > 0)    { w += ones[n] + ' '; }
-  return w.trim();
+/* ── UTILS ── */
+function fmt(n) { return Number(n).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+function fmtQ(n) { return Number(n).toLocaleString('en-IN'); }
+function localDate() {
+  const d = new Date();
+  const dd = String(d.getDate()).padStart(2,'0');
+  const mm = String(d.getMonth()+1).padStart(2,'0');
+  const yy = d.getFullYear();
+  return `${yy}-${mm}-${dd}`;
 }
-function toWords(amount) {
-  const r = Math.floor(amount), p = Math.round((amount-r)*100);
-  return n2w(r) + (p>0?' and '+n2w(p)+' Paise':'') + ' Only';
+function displayDate(iso) {
+  if (!iso) return '—';
+  const [y,m,d] = iso.split('-');
+  return `${d}/${m}/${y}`;
 }
-function fmt(n) { return Number(n).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2}); }
-function fmtQty(n) { return Number(n).toLocaleString('en-IN'); }
-function fmtDate(d) { if(!d) return '—'; const [y,m,day]=d.split('-'); return `${day}/${m}/${y}`; }
-
-function showToast(msg) {
+function toast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 
-// ── AUTH ─────────────────────────────────────────────────
+const W1 = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
+  'Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+const W2 = ['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+function n2w(n) {
+  n = Math.round(n); if (!n) return 'Zero';
+  let w = '';
+  if (n >= 10000000) { w += n2w(Math.floor(n/10000000)) + ' Crore '; n %= 10000000; }
+  if (n >= 100000)   { w += n2w(Math.floor(n/100000))   + ' Lakh ';  n %= 100000; }
+  if (n >= 1000)     { w += n2w(Math.floor(n/1000))     + ' Thousand '; n %= 1000; }
+  if (n >= 100)      { w += W1[Math.floor(n/100)]       + ' Hundred '; n %= 100; }
+  if (n >= 20)       { w += W2[Math.floor(n/10)] + (n%10?' '+W1[n%10]:'') + ' '; n = 0; }
+  else if (n)        { w += W1[n] + ' '; }
+  return w.trim();
+}
+function toWords(amt) {
+  const r = Math.floor(amt), p = Math.round((amt-r)*100);
+  return n2w(r) + ' Rupees' + (p ? ' and ' + n2w(p) + ' Paise' : '') + ' Only';
+}
+
+/* ── AUTH ── */
 async function doLogin() {
   const pin = document.getElementById('pinInput').value.trim();
   if (!pin) return;
   try {
-    const res = await fetch(`${API}/auth/login`, {
+    const r = await fetch(`${API}/auth/login`, {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({pin})
     });
-    const data = await res.json();
-    if (data.success) {
+    const d = await r.json();
+    if (d.success) {
       document.getElementById('pin-screen').style.display = 'none';
-      document.getElementById('main-app').style.display = 'block';
-      document.getElementById('invoiceDate').value = new Date().toISOString().split('T')[0];
-      loadNextNumber(); recalc();
+      document.getElementById('app').style.display = 'block';
+      initApp();
     } else {
       document.getElementById('pinError').style.display = 'block';
       document.getElementById('pinInput').value = '';
     }
   } catch(e) {
-    document.getElementById('pinError').textContent = 'Connection error. Try again.';
+    document.getElementById('pinError').textContent = 'Connection error.';
     document.getElementById('pinError').style.display = 'block';
   }
 }
+document.getElementById('pinInput').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 function doLogout() {
   document.getElementById('pin-screen').style.display = 'flex';
-  document.getElementById('main-app').style.display = 'none';
+  document.getElementById('app').style.display = 'none';
   document.getElementById('pinInput').value = '';
-  document.getElementById('pinError').style.display = 'none';
-}
-document.getElementById('pinInput').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
-
-// ── TABS ─────────────────────────────────────────────────
-function showTab(tab) {
-  document.getElementById('form-tab').style.display = tab==='form'?'block':'none';
-  document.getElementById('history-tab').style.display = tab==='history'?'block':'none';
-  document.getElementById('tab-form').classList.toggle('active', tab==='form');
-  document.getElementById('tab-history').classList.toggle('active', tab==='history');
-  if (tab==='history') loadHistory();
 }
 
-// ── NEXT NUMBER ──────────────────────────────────────────
+function initApp() {
+  document.getElementById('invoiceDate').value = localDate();
+  loadNextNumber();
+}
+
+/* ── TABS ── */
+function showTab(t) {
+  document.getElementById('sec-new').style.display  = t==='new'  ? 'block' : 'none';
+  document.getElementById('sec-hist').style.display = t==='hist' ? 'block' : 'none';
+  document.getElementById('tab-new').classList.toggle('active', t==='new');
+  document.getElementById('tab-hist').classList.toggle('active', t==='hist');
+  if (t==='hist') loadHistory();
+}
+
+/* ── NEXT NUMBER ── */
 async function loadNextNumber() {
   try {
-    const res = await fetch(`${API}/invoice/next-number`);
-    const data = await res.json();
-    document.getElementById('invoiceNo').value = data.invoice_number;
+    const r = await fetch(`${API}/invoice/next-number`);
+    const d = await r.json();
+    document.getElementById('invoiceNo').value = d.invoice_number;
   } catch(e) { document.getElementById('invoiceNo').value = 'Error'; }
 }
 
-// ── RECALC ───────────────────────────────────────────────
+/* ── RECALC ── */
 function recalc() {
-  const qty = parseFloat(document.getElementById('quantity').value)||0;
+  const qty  = parseFloat(document.getElementById('quantity').value)||0;
   const rate = parseFloat(document.getElementById('rate').value)||0;
-  const amt = qty*rate;
-  document.getElementById('s-qty').textContent = fmtQty(qty)+' Kgs';
-  document.getElementById('s-rate').textContent = '₹ '+fmt(rate)+' / Kg';
-  document.getElementById('s-total').textContent = '₹ '+fmt(amt);
-  document.getElementById('amountWords').textContent = amt>0?toWords(amt):'—';
+  const amt  = qty * rate;
+  document.getElementById('s-qty').textContent   = fmtQ(qty) + ' Kgs';
+  document.getElementById('s-rate').textContent  = '₹ ' + fmt(rate) + ' / Kg';
+  document.getElementById('s-total').textContent = '₹ ' + fmt(amt);
+  document.getElementById('amountWords').textContent = amt > 0 ? toWords(amt) : '—';
 }
 
-// ── GENERATE ─────────────────────────────────────────────
-async function generateInvoice() {
-  const qty   = parseFloat(document.getElementById('quantity').value)||0;
-  const rate  = parseFloat(document.getElementById('rate').value)||0;
-  const amt   = qty*rate;
-  const name  = document.getElementById('consignorName').value.trim();
-  if (!name)       { showToast('Enter consignor name'); return; }
-  if (!qty||qty<=0){ showToast('Enter valid quantity'); return; }
-  if (!rate||rate<=0){ showToast('Enter valid rate'); return; }
+/* ── GENERATE ── */
+let currentInvoiceId = null;
+let editMode = false;
 
+async function generateInvoice() {
+  const qty  = parseFloat(document.getElementById('quantity').value)||0;
+  const rate = parseFloat(document.getElementById('rate').value)||0;
+  const name = document.getElementById('consignorName').value.trim();
+  if (!name)      { toast('Enter consignor name'); return; }
+  if (!qty)       { toast('Enter quantity'); return; }
+
+  const amt   = qty * rate;
   const date  = document.getElementById('invoiceDate').value;
   const place = document.getElementById('placeInput').value.trim();
   const pin   = document.getElementById('pinCode').value.trim();
-  const veh   = document.getElementById('vehicleNo').value.toUpperCase().trim();
+  const veh   = document.getElementById('vehicleNo').value.trim().toUpperCase();
+  const addr  = document.getElementById('consignorAddress').value.trim();
+  const state = document.getElementById('stateName').value.trim();
+  const sc    = document.getElementById('stateCode').value.trim();
   const hsn   = document.getElementById('hsnCode').value;
   let desc    = document.getElementById('productDesc').value;
-  if (desc==='Custom') desc = document.getElementById('customDesc').value||'—';
+  if (desc==='Custom') desc = document.getElementById('customDesc').value.trim() || '—';
   const words = toWords(amt);
 
+  const body = {
+    invoice_date:date, consignor_name:name, consignor_address:addr,
+    place, pincode:pin, state, state_code:sc,
+    vehicle_number:veh, product_desc:desc, hsn_code:hsn,
+    quantity:qty, rate, amount:amt, amount_words:words
+  };
+
   try {
-    const res = await fetch(`${API}/invoice/generate`, {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        invoice_date:date, consignor_name:name, place, pincode:pin,
-        vehicle_number:veh, product_desc:desc, hsn_code:hsn,
-        quantity:qty, rate, amount:amt, amount_words:words
-      })
-    });
-    const data = await res.json();
-    if (!data.success) { showToast('Error saving invoice'); return; }
+    let invoiceNumber;
+    if (editMode && currentInvoiceId) {
+      const r = await fetch(`${API}/invoices/${currentInvoiceId}`, {
+        method:'PUT', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({...body, amount:amt, amount_words:words})
+      });
+      const d = await r.json();
+      if (!d.success) { toast('Update failed'); return; }
+      invoiceNumber = document.getElementById('invoiceNo').value;
+      toast('Invoice updated ✓');
+    } else {
+      const r = await fetch(`${API}/invoice/generate`, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({...body, amount:amt, amount_words:words})
+      });
+      const d = await r.json();
+      if (!d.success) { toast('Save failed'); return; }
+      invoiceNumber = d.invoice_number;
+      toast(invoiceNumber + ' saved ✓');
+    }
 
-    // Fill A4 preview
-    document.getElementById('h-invno').textContent  = data.invoice_number;
-    document.getElementById('h-date').textContent   = fmtDate(date);
-    document.getElementById('p-consignor').textContent = name;
-    document.getElementById('p-place').textContent  = place||'—';
-    document.getElementById('p-pin').textContent    = pin||'—';
-    document.getElementById('p-vehicle').textContent= veh||'—';
-    document.getElementById('p-desc').textContent   = desc;
-    document.getElementById('p-hsn').textContent    = hsn;
-    document.getElementById('p-qty').textContent    = fmtQty(qty);
-    document.getElementById('p-rate').textContent   = fmt(rate);
-    document.getElementById('p-amount').textContent = fmt(amt);
-    document.getElementById('p-total-qty').textContent    = fmtQty(qty);
-    document.getElementById('p-total-amount').textContent = fmt(amt);
-    document.getElementById('p-words').textContent  = words;
-
+    fillPreview({invoiceNumber:invoiceNumber, date:date, name, addr, place, pin,
+      veh, desc, hsn, qty, rate, amt, words});
     document.getElementById('print-view').style.display = 'block';
-    document.getElementById('print-view').scrollIntoView({behavior:'smooth',block:'start'});
-    showToast(data.invoice_number+' saved ✓');
-    loadNextNumber();
-  } catch(e) { showToast('Network error. Try again.'); }
+    document.getElementById('print-view').scrollIntoView({behavior:'smooth'});
+    if (!editMode) loadNextNumber();
+    editMode = false; currentInvoiceId = null;
+  } catch(e) { toast('Network error'); }
 }
 
-function printCurrent() {
-  if (document.getElementById('print-view').style.display==='none') {
-    showToast('Generate invoice first'); return;
+function fillPreview(o) {
+  // consignor col
+  document.getElementById('p-name').textContent = o.name;
+  let addrLines = [];
+  if (o.addr) addrLines.push(o.addr);
+  if (o.place) addrLines.push(o.place + (o.pin ? ' — ' + o.pin : ''));
+  if (o.state) addrLines.push(o.state + (o.sc ? ' · State Code: ' + o.sc : ''));
+  document.getElementById('p-addr').innerHTML = addrLines.join('<br>');
+  // info strip
+  document.getElementById('p-invno').textContent = o.invoiceNumber;
+  document.getElementById('p-date').textContent  = displayDate(o.date);
+  document.getElementById('p-veh').textContent   = o.veh || '—';
+  // table
+  document.getElementById('p-desc').textContent = o.desc;
+  document.getElementById('p-hsn').textContent  = o.hsn;
+  document.getElementById('p-qty').textContent  = fmtQ(o.qty);
+  document.getElementById('p-rate').textContent = fmt(o.rate);
+  document.getElementById('p-amt').textContent  = fmt(o.amt);
+  document.getElementById('p-tqty').textContent = fmtQ(o.qty);
+  document.getElementById('p-tamt').textContent = fmt(o.amt);
+  document.getElementById('p-words').textContent = o.words;
+}
+
+function printInvoice() {
+  if (document.getElementById('print-view').style.display === 'none') {
+    toast('Generate an invoice first'); return;
   }
+  const name = document.getElementById('consignorName').value.trim().replace(/\s+/g,'_');
+  const num  = document.getElementById('invoiceNo').value.slice(-3);
+  document.title = `${name}_${num}`;
   window.print();
 }
 
 function resetForm() {
-  ['consignorName','placeInput','pinCode','vehicleNo','quantity'].forEach(id => {
+  ['consignorName','consignorAddress','placeInput','pinCode','vehicleNo','quantity'].forEach(id => {
     document.getElementById(id).value = '';
   });
   document.getElementById('rate').value = '8';
+  document.getElementById('stateName').value = 'Karnataka';
+  document.getElementById('stateCode').value = '29';
   document.getElementById('print-view').style.display = 'none';
-  document.getElementById('invoiceDate').value = new Date().toISOString().split('T')[0];
+  document.getElementById('invoiceDate').value = localDate();
+  editMode = false; currentInvoiceId = null;
   loadNextNumber(); recalc();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ── HISTORY ──────────────────────────────────────────────
+/* ── HISTORY ── */
+let allInvoices = [];
+
 async function loadHistory() {
-  const list = document.getElementById('history-list');
-  list.innerHTML = '<div class="loading">Loading...</div>';
+  const list = document.getElementById('hist-list');
+  list.innerHTML = '<div class="loading-msg">Loading...</div>';
   try {
-    const res = await fetch(`${API}/invoices`);
-    const data = await res.json();
-    if (!data.length) { list.innerHTML = '<div class="empty-state">No invoices yet.</div>'; return; }
-    list.innerHTML = data.map(inv => `
-      <div class="inv-item" onclick="viewInvoice('${inv.id}')">
-        <div>
-          <div class="inv-item-no">${inv.invoice_number}</div>
-          <div class="inv-item-name">${inv.consignor_name}</div>
-          <div class="inv-item-date">${fmtDate(inv.invoice_date)} · ${fmtQty(inv.quantity)} Kgs</div>
+    const r = await fetch(`${API}/invoices`);
+    allInvoices = await r.json();
+    document.getElementById('hist-count').textContent = `${allInvoices.length} invoices`;
+    if (!allInvoices.length) { list.innerHTML = '<div class="empty">No invoices yet.</div>'; return; }
+    list.innerHTML = allInvoices.map(inv => `
+      <div class="hist-item">
+        <div class="hist-top">
+          <div class="hist-no">${inv.invoice_number}</div>
+          <div class="hist-amt">₹${fmt(inv.amount)}</div>
         </div>
-        <div class="inv-item-amount">₹${fmt(inv.amount)}</div>
+        <div class="hist-name">${inv.consignor_name}</div>
+        <div class="hist-meta">${displayDate(inv.invoice_date)} · ${fmtQ(inv.quantity)} Kgs · ₹${fmt(inv.rate)}/Kg</div>
+        <div class="hist-actions">
+          <button class="btn-sm btn-edit" onclick="editInvoice('${inv.id}')">Edit</button>
+          <button class="btn-sm btn-del"  onclick="deleteInvoice('${inv.id}','${inv.invoice_number}')">Delete</button>
+          <button class="btn-sm btn-edit" onclick="reprintInvoice('${inv.id}')">Print</button>
+        </div>
       </div>
     `).join('');
-  } catch(e) { list.innerHTML = '<div class="empty-state">Could not load. Check connection.</div>'; }
+  } catch(e) { list.innerHTML = '<div class="empty">Could not load.</div>'; }
 }
 
-function viewInvoice(id) {
-  fetch(`${API}/invoices/${id}`).then(r=>r.json()).then(inv => {
-    document.getElementById('h-invno').textContent  = inv.invoice_number;
-    document.getElementById('h-date').textContent   = fmtDate(inv.invoice_date);
-    document.getElementById('p-consignor').textContent = inv.consignor_name;
-    document.getElementById('p-place').textContent  = inv.place||'—';
-    document.getElementById('p-pin').textContent    = inv.pincode||'—';
-    document.getElementById('p-vehicle').textContent= inv.vehicle_number||'—';
-    document.getElementById('p-desc').textContent   = inv.product_desc;
-    document.getElementById('p-hsn').textContent    = inv.hsn_code;
-    document.getElementById('p-qty').textContent    = fmtQty(inv.quantity);
-    document.getElementById('p-rate').textContent   = fmt(inv.rate);
-    document.getElementById('p-amount').textContent = fmt(inv.amount);
-    document.getElementById('p-total-qty').textContent    = fmtQty(inv.quantity);
-    document.getElementById('p-total-amount').textContent = fmt(inv.amount);
-    document.getElementById('p-words').textContent  = inv.amount_words;
+async function editInvoice(id) {
+  const inv = allInvoices.find(i => i.id === id);
+  if (!inv) return;
+  editMode = true; currentInvoiceId = id;
+  document.getElementById('consignorName').value   = inv.consignor_name;
+  document.getElementById('consignorAddress').value= inv.consignor_address||'';
+  document.getElementById('placeInput').value      = inv.place||'';
+  document.getElementById('pinCode').value         = inv.pincode||'';
+  document.getElementById('stateName').value       = inv.state||'Karnataka';
+  document.getElementById('stateCode').value       = inv.state_code||'29';
+  document.getElementById('vehicleNo').value       = inv.vehicle_number||'';
+  document.getElementById('invoiceDate').value     = inv.invoice_date;
+  document.getElementById('quantity').value        = inv.quantity;
+  document.getElementById('rate').value            = inv.rate;
+  document.getElementById('invoiceNo').value       = inv.invoice_number;
+  showTab('new');
+  recalc();
+  toast('Editing ' + inv.invoice_number);
+}
+
+async function deleteInvoice(id, num) {
+  if (!confirm(`Delete ${num}? This cannot be undone.`)) return;
+  try {
+    const r = await fetch(`${API}/invoices/${id}`, {method:'DELETE'});
+    const d = await r.json();
+    if (d.success) { toast(num + ' deleted'); loadHistory(); }
+    else toast('Delete failed');
+  } catch(e) { toast('Network error'); }
+}
+
+async function reprintInvoice(id) {
+  try {
+    const r = await fetch(`${API}/invoices/${id}`);
+    const inv = await r.json();
+    fillPreview({
+      invoiceNumber: inv.invoice_number,
+      date: inv.invoice_date,
+      name: inv.consignor_name,
+      addr: inv.consignor_address||'',
+      place: inv.place||'',
+      pin:  inv.pincode||'',
+      state: inv.state||'',
+      sc:   inv.state_code||'',
+      veh:  inv.vehicle_number||'',
+      desc: inv.product_desc,
+      hsn:  inv.hsn_code,
+      qty:  inv.quantity,
+      rate: inv.rate,
+      amt:  inv.amount,
+      words:inv.amount_words
+    });
     document.getElementById('print-view').style.display = 'block';
-    showTab('form');
-    document.getElementById('print-view').scrollIntoView({behavior:'smooth',block:'start'});
-  });
+    showTab('new');
+    document.getElementById('print-view').scrollIntoView({behavior:'smooth'});
+    const name = inv.consignor_name.replace(/\s+/g,'_');
+    const num  = inv.invoice_number.slice(-3);
+    document.title = `${name}_${num}`;
+    setTimeout(()=>window.print(), 300);
+  } catch(e) { toast('Could not load invoice'); }
 }
 
-// ── EVENTS ───────────────────────────────────────────────
+/* ── CSV DOWNLOAD ── */
+function downloadCSV() {
+  if (!allInvoices.length) { toast('No invoices to download'); return; }
+  const headers = ['Invoice No','Date','Consignor','Place','Pincode','State','Vehicle','Description','HSN','Qty (Kg)','Rate','Amount','Amount in Words'];
+  const rows = allInvoices.map(i => [
+    i.invoice_number, i.invoice_date, i.consignor_name,
+    i.place||'', i.pincode||'', i.state||'', i.vehicle_number||'',
+    i.product_desc, i.hsn_code, i.quantity, i.rate, i.amount, i.amount_words
+  ].map(v => `"${String(v).replace(/"/g,'""')}"`).join(','));
+  const csv = [headers.join(','), ...rows].join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url;
+  a.download = `URP_Invoices_${new Date().getFullYear()}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('CSV downloaded ✓');
+}
+
+/* ── EVENTS ── */
 document.getElementById('productDesc').addEventListener('change', function() {
-  document.getElementById('customDescGroup').style.display = this.value==='Custom'?'flex':'none';
+  document.getElementById('customDescWrap').style.display = this.value==='Custom'?'block':'none';
 });
 ['quantity','rate'].forEach(id => document.getElementById(id).addEventListener('input', recalc));
 document.getElementById('vehicleNo').addEventListener('input', function() { this.value = this.value.toUpperCase(); });
+document.getElementById('pinInput').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 </script>
 </body>
 </html>
