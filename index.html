@@ -6,76 +6,86 @@
 <title>URP Systems</title>
 <style>
   :root {
-    --green: #1a4d2e;
-    --green2: #2d7a4f;
-    --red: #c0392b;
+    --primary: #0867cf;
+    --primary-dark: #054a99;
+    --primary-light: #e8f2fd;
+    --primary-border: #b8d4f5;
+    --radius: 10px;
     --border: #ddd;
     --muted: #666;
-    --radius: 10px;
+    --red: #c0392b;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f4f1; color: #1a1a1a; }
 
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f4f8; color: #1a1a1a; }
+
+  /* ── LOGIN ── */
   #pin-screen {
     min-height: 100vh; display: flex; align-items: center;
-    justify-content: center; background: #f0f4f1; padding: 20px;
+    justify-content: center; background: #f8f9fa; padding: 20px;
   }
   .pin-card {
-    background: white; border-radius: 20px; border: 1px solid #d0e4d8;
-    padding: 36px 28px; width: 100%; max-width: 340px; text-align: center;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    background: white; border-radius: 20px; border: 1px solid #e8e8e8;
+    padding: 40px 32px; width: 100%; max-width: 360px; text-align: center;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
   }
-  .pin-logo {
-    width: 72px; height: 72px;
-    background: linear-gradient(135deg, #1a4d2e, #2d7a4f);
-    border-radius: 18px; margin: 0 auto 20px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .pin-logo svg { width: 36px; height: 36px; }
-  .pin-card h2 { font-size: 26px; font-weight: 800; color: #1a4d2e; margin-bottom: 6px; letter-spacing: 0.5px; }
-  .pin-card p { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+  .pin-logo-img { width: 180px; margin: 0 auto 8px; display: block; }
+  .pin-tagline { font-size: 12px; color: #999; letter-spacing: 1px; margin-bottom: 32px; text-transform: uppercase; }
   .pin-input {
-    width: 100%; padding: 14px; border: 1.5px solid #c0dac8;
+    width: 100%; padding: 14px; border: 1.5px solid #e0e0e0;
     border-radius: 10px; font-size: 24px; text-align: center;
-    letter-spacing: 8px; color: #1a4d2e; margin-bottom: 14px;
+    letter-spacing: 8px; color: #333; margin-bottom: 14px;
+    transition: border-color 0.2s;
   }
-  .pin-input:focus { outline: none; border-color: #2d7a4f; box-shadow: 0 0 0 3px rgba(45,122,79,0.15); }
+  .pin-input:focus { outline: none; border-color: #0867cf; box-shadow: 0 0 0 3px rgba(8,103,207,0.1); }
   .pin-btn {
     width: 100%; padding: 14px;
-    background: linear-gradient(135deg, #1a4d2e, #2d7a4f);
+    background: linear-gradient(135deg, #0867cf, #054a99);
     color: white; border: none; border-radius: 10px;
     font-size: 16px; font-weight: 700; cursor: pointer;
   }
   .pin-error { color: var(--red); font-size: 13px; margin-top: 10px; display: none; }
 
+  /* ── COMPANY SELECTOR ── */
   #company-screen {
     min-height: 100vh; display: none; align-items: center;
-    justify-content: center; background: #f0f4f1; padding: 20px;
+    justify-content: center; background: #f8f9fa; padding: 20px;
   }
   .company-card {
-    background: white; border-radius: 16px; border: 1px solid #d0e4d8;
-    padding: 28px 24px; width: 100%; max-width: 380px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    background: white; border-radius: 20px; border: 1px solid #e8e8e8;
+    padding: 32px 24px; width: 100%; max-width: 400px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
   }
-  .company-card h2 { font-size: 18px; font-weight: 700; color: #1a4d2e; margin-bottom: 6px; }
-  .company-card p { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .company-card-logo { width: 120px; display: block; margin: 0 auto 20px; }
+  .company-card h2 { font-size: 16px; font-weight: 700; color: #333; margin-bottom: 4px; text-align: center; }
+  .company-card p { font-size: 13px; color: var(--muted); margin-bottom: 20px; text-align: center; }
   .company-list { display: flex; flex-direction: column; gap: 10px; }
+
   .company-btn {
-    width: 100%; padding: 14px 16px; background: white;
-    border: 1.5px solid #d0e4d8; border-radius: var(--radius);
-    text-align: left; cursor: pointer; font-family: inherit;
+    width: 100%; padding: 14px 16px;
+    border-radius: var(--radius); text-align: left;
+    cursor: pointer; font-family: inherit; border: none;
+    border-left: 5px solid transparent;
+    transition: transform 0.1s, box-shadow 0.1s;
   }
-  .company-btn:hover, .company-btn:active { border-color: #2d7a4f; background: #f0f8f3; }
-  .company-btn-name { font-size: 14px; font-weight: 700; color: #1a4d2e; margin-bottom: 2px; }
+  .company-btn:active { transform: scale(0.98); }
+  .company-btn-regal  { background: #e8f2fd; border-left-color: #0867cf; }
+  .company-btn-rm     { background: #e8f5ec; border-left-color: #35a137; }
+  .company-btn-sm     { background: #eaecf0; border-left-color: #2e4a6e; }
+  .company-btn-name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+  .company-btn-regal .company-btn-name  { color: #054a99; }
+  .company-btn-rm    .company-btn-name  { color: #1e6e20; }
+  .company-btn-sm    .company-btn-name  { color: #1a2e45; }
   .company-btn-gst { font-size: 11px; color: var(--muted); }
   .back-btn {
-    width: 100%; margin-top: 12px; padding: 10px;
+    width: 100%; margin-top: 14px; padding: 10px;
     background: none; border: none; color: var(--muted);
     font-size: 13px; cursor: pointer; font-family: inherit;
   }
 
+  /* ── HEADER ── */
   header {
-    background: linear-gradient(135deg, #1a4d2e, #2d7a4f);
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
     color: white; padding: 14px 20px;
     position: sticky; top: 0; z-index: 10;
     display: flex; justify-content: space-between; align-items: center;
@@ -83,16 +93,18 @@
   header h1 { font-size: 15px; font-weight: 700; }
   header p { font-size: 11px; opacity: 0.7; margin-top: 1px; }
   .hbtn {
-    background: rgba(255,255,255,0.15); border: none; color: white;
+    background: rgba(255,255,255,0.18); border: none; color: white;
     padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer;
   }
   .hbtn-co {
-    background: rgba(255,255,255,0.15); border: none; color: white;
+    background: rgba(255,255,255,0.18); border: none; color: white;
     padding: 5px 10px; border-radius: 6px; font-size: 11px; cursor: pointer; margin-right: 6px;
   }
 
+  /* ── BODY ── */
   .body { padding: 16px; max-width: 480px; margin: 0 auto; }
 
+  /* ── TABS ── */
   .tabs {
     display: flex; background: white; border-radius: var(--radius);
     border: 1px solid var(--border); margin-bottom: 16px; overflow: hidden;
@@ -102,20 +114,22 @@
     font-weight: 600; color: var(--muted); cursor: pointer;
     border: none; background: none; border-bottom: 3px solid transparent;
   }
-  .tab.active { color: #1a4d2e; border-bottom-color: #1a4d2e; background: #f0f8f3; }
+  .tab.active { color: var(--primary); border-bottom-color: var(--primary); background: var(--primary-light); }
 
+  /* ── CARDS ── */
   .card {
     background: white; border-radius: var(--radius);
     border: 1px solid var(--border); margin-bottom: 14px; overflow: hidden;
   }
   .card-head {
-    background: linear-gradient(135deg, #e8f5ec, #d4edd9);
+    background: var(--primary-light);
     padding: 9px 16px; font-size: 11px; font-weight: 700;
-    color: #1a4d2e; text-transform: uppercase; letter-spacing: 0.6px;
-    border-bottom: 1px solid #c0dac8;
+    color: var(--primary-dark); text-transform: uppercase; letter-spacing: 0.6px;
+    border-bottom: 1px solid var(--primary-border);
   }
   .card-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
 
+  /* ── FIELDS ── */
   .field { display: flex; flex-direction: column; gap: 5px; }
   .field label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
   .field input, .field select, .field textarea {
@@ -125,7 +139,7 @@
   }
   .field textarea { resize: vertical; min-height: 72px; line-height: 1.5; }
   .field input:focus, .field select:focus, .field textarea:focus {
-    outline: none; border-color: #2d7a4f; box-shadow: 0 0 0 3px rgba(45,122,79,0.1);
+    outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(8,103,207,0.1);
   }
   .field select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -133,6 +147,7 @@
   }
   .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
+  /* ── AUTOCOMPLETE ── */
   .ac-wrap { position: relative; }
   .ac-list {
     position: absolute; top: 100%; left: 0; right: 0; z-index: 100;
@@ -144,17 +159,19 @@
     display: flex; justify-content: space-between; border-bottom: 1px solid #f0f0f0;
   }
   .ac-item:last-child { border-bottom: none; }
-  .ac-item:hover, .ac-item:active { background: #f0f8f3; }
+  .ac-item:hover, .ac-item:active { background: var(--primary-light); }
   .ac-pin { font-size: 12px; color: var(--muted); }
 
+  /* ── SUMMARY ── */
   .summary-card {
-    background: white; border: 1px solid #b0d9c0;
+    background: white; border: 1px solid var(--primary-border);
     border-radius: var(--radius); padding: 14px 16px; margin-bottom: 14px;
   }
-  .summary-head { font-size: 11px; font-weight: 700; color: #1a4d2e; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
-  .summary-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 14px; border-bottom: 1px solid #e0f0e8; }
-  .summary-row:last-child { border: none; font-size: 15px; font-weight: 700; color: #1a4d2e; padding-top: 8px; }
+  .summary-head { font-size: 11px; font-weight: 700; color: var(--primary-dark); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .summary-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 14px; border-bottom: 1px solid #eaf2fc; }
+  .summary-row:last-child { border: none; font-size: 15px; font-weight: 700; color: var(--primary-dark); padding-top: 8px; }
 
+  /* ── WORDS ── */
   .words-box {
     background: #fffbe6; border: 1px solid #e6d400;
     border-radius: var(--radius); padding: 12px 16px; margin-bottom: 16px;
@@ -162,59 +179,64 @@
   .words-label { font-size: 11px; font-weight: 700; color: #7a6000; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
   .words-text { font-size: 13px; color: #3d3000; font-style: italic; font-weight: 500; line-height: 1.5; }
 
+  /* ── BUTTONS ── */
   .btn-stack { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
   .btn {
     width: 100%; padding: 14px; border-radius: var(--radius);
     border: none; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
   }
-  .btn-primary { background: linear-gradient(135deg, #1a4d2e, #2d7a4f); color: white; }
-  .btn-outline { background: white; color: #1a4d2e; border: 1.5px solid #1a4d2e; }
+  .btn-primary { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; }
+  .btn-outline { background: white; color: var(--primary-dark); border: 1.5px solid var(--primary); }
   .btn-ghost { background: #eee; color: #555; }
   .btn:disabled { opacity: 0.6; cursor: not-allowed; }
   .btn-sm {
     padding: 7px 14px; font-size: 12px; font-weight: 600;
     border-radius: 6px; border: none; cursor: pointer; font-family: inherit;
   }
-  .btn-edit-sm { background: #e8f5ec; color: #1a4d2e; }
+  .btn-edit-sm { background: var(--primary-light); color: var(--primary-dark); }
   .btn-del-sm  { background: #fdecea; color: #c0392b; }
-  .btn-pdf-sm  { background: #e6f4ed; color: #1a4d2e; }
+  .btn-pdf-sm  { background: #e6f4ed; color: #1a6e20; }
 
+  /* ── SUCCESS BOX ── */
   .success-box {
-    background: #e6f4ed; border: 1px solid #b0d9c0;
+    background: #e8f5ec; border: 1px solid #b0d9b8;
     border-radius: var(--radius); padding: 14px 16px; margin-bottom: 14px; display: none;
   }
-  .success-box h3 { font-size: 14px; font-weight: 700; color: #1a4d2e; margin-bottom: 4px; }
+  .success-box h3 { font-size: 14px; font-weight: 700; color: #1a6e20; margin-bottom: 4px; }
   .success-box p { font-size: 13px; color: #2a5c3a; }
 
+  /* ── HISTORY ── */
   .hist-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
   .hist-item {
     background: white; border-radius: var(--radius);
     border: 1px solid var(--border); padding: 13px 16px;
   }
   .hist-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
-  .hist-no { font-size: 14px; font-weight: 700; color: #1a4d2e; }
-  .hist-amt { font-size: 15px; font-weight: 700; color: #1a4d2e; }
+  .hist-no { font-size: 14px; font-weight: 700; color: var(--primary-dark); }
+  .hist-amt { font-size: 15px; font-weight: 700; color: var(--primary-dark); }
   .hist-name { font-size: 13px; color: #333; margin-bottom: 2px; }
   .hist-meta { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
   .hist-actions { display: flex; gap: 8px; flex-wrap: wrap; }
   .hist-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
   .hist-count { font-size: 13px; color: var(--muted); }
 
+  /* ── MONTH GROUPS ── */
   .month-group { margin-bottom: 10px; }
   .month-header {
     background: white; border-radius: var(--radius); border: 1px solid var(--border);
     padding: 12px 16px; cursor: pointer;
     display: flex; justify-content: space-between; align-items: center;
   }
-  .month-header:active { background: #f0f8f3; }
-  .month-name { font-size: 14px; font-weight: 700; color: #1a4d2e; }
+  .month-header:active { background: var(--primary-light); }
+  .month-name { font-size: 14px; font-weight: 700; color: var(--primary-dark); }
   .month-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
   .month-chevron { font-size: 12px; color: var(--muted); }
   .month-body { padding: 6px 0 0 0; display: flex; flex-direction: column; gap: 8px; }
 
+  /* ── TOAST ── */
   .toast {
     position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-    background: #1a4d2e; color: white; padding: 10px 20px;
+    background: var(--primary-dark); color: white; padding: 10px 20px;
     border-radius: 20px; font-size: 13px; font-weight: 500;
     z-index: 999; opacity: 0; transition: opacity 0.3s; white-space: nowrap;
   }
@@ -228,13 +250,8 @@
 <!-- PIN SCREEN -->
 <div id="pin-screen">
   <div class="pin-card">
-    <div class="pin-logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round">
-        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-      </svg>
-    </div>
-    <h2>URP Systems</h2>
-    <p>Enter PIN to continue</p>
+    <img src="URP_Sysyems_Logo.png" alt="URP Systems" class="pin-logo-img" />
+    <div class="pin-tagline">Smart Billing. Simplified.</div>
     <input type="password" class="pin-input" id="pinInput" placeholder="• • • •" inputmode="numeric" maxlength="6" />
     <button type="button" class="pin-btn" onclick="doLogin()">Unlock</button>
     <div class="pin-error" id="pinError">Incorrect PIN. Try again.</div>
@@ -244,6 +261,7 @@
 <!-- COMPANY SELECTOR -->
 <div id="company-screen">
   <div class="company-card">
+    <img src="URP_Sysyems_Logo.png" alt="URP Systems" class="company-card-logo" />
     <h2>Select Company</h2>
     <p>Which company are you invoicing for?</p>
     <div class="company-list" id="companyList">
@@ -417,6 +435,34 @@ let allInvoices = [];
 let currentCompany = null;
 let allCompanies = [];
 
+// Colour schemes per company
+const SCHEMES = {
+  'Regal Plastics': {
+    primary: '#0867cf', dark: '#054a99', light: '#e8f2fd', border: '#b8d4f5'
+  },
+  'R M Equipments Pvt Ltd': {
+    primary: '#35a137', dark: '#1e6e20', light: '#e8f5ec', border: '#b0d9b8'
+  },
+  'S M Equipments': {
+    primary: '#4a6a8e', dark: '#2e4a6e', light: '#eaecf0', border: '#b8c8da'
+  }
+};
+
+function applyScheme(companyName) {
+  const s = SCHEMES[companyName] || SCHEMES['Regal Plastics'];
+  const r = document.documentElement.style;
+  r.setProperty('--primary',        s.primary);
+  r.setProperty('--primary-dark',   s.dark);
+  r.setProperty('--primary-light',  s.light);
+  r.setProperty('--primary-border', s.border);
+}
+
+const COMPANY_CLASSES = {
+  'Regal Plastics':       'company-btn-regal',
+  'R M Equipments Pvt Ltd': 'company-btn-rm',
+  'S M Equipments':       'company-btn-sm'
+};
+
 const PLACES = [
   {n:'Hubballi',p:'580026'},{n:'Gadag',p:'582102'},
   {n:'Dandeli',p:'581325'},{n:'Sirsi',p:'581401'},
@@ -562,22 +608,27 @@ async function showCompanyScreen() {
       return;
     }
   }
-  document.getElementById('companyList').innerHTML = allCompanies.map(co => `
-    <button type="button" class="company-btn" onclick="selectCompany('${co.id}')">
-      <div class="company-btn-name">${co.name}</div>
-      <div class="company-btn-gst">GST: ${co.gst}</div>
-    </button>
-  `).join('');
+  document.getElementById('companyList').innerHTML = allCompanies.map(co => {
+    const cls = COMPANY_CLASSES[co.name] || 'company-btn-sm';
+    return `
+      <button type="button" class="company-btn ${cls}" onclick="selectCompany('${co.id}')">
+        <div class="company-btn-name">${co.name}</div>
+        <div class="company-btn-gst">GST: ${co.gst}</div>
+      </button>
+    `;
+  }).join('');
 }
 
 function selectCompany(companyId) {
   currentCompany = allCompanies.find(c => c.id === companyId);
   sessionStorage.setItem('urp_company', JSON.stringify(currentCompany));
+  applyScheme(currentCompany.name);
   document.getElementById('company-screen').style.display = 'none';
   showApp();
 }
 
 function showApp() {
+  applyScheme(currentCompany.name);
   document.getElementById('app').style.display = 'block';
   document.getElementById('headerTitle').textContent = currentCompany.name;
   document.getElementById('headerSub').textContent = 'URP Purchase · ' + currentCompany.address.split('\n')[0];
