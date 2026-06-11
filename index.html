@@ -612,10 +612,10 @@ function switchCompany() {
 
 // ── COMPANIES ────────────────────────────────────────────
 async function loadCompanies() {
-  if (allCompanies.length > 0) return;
   try {
     const r = await fetch(`${API}/companies`);
     allCompanies = await r.json();
+    renderCompanyList();
   } catch(e) {
     document.getElementById('companyList').innerHTML = '<div class="empty">Could not load. Check connection.</div>';
   }
@@ -964,9 +964,8 @@ fetch(`${API}/health`).catch(()=>{});
     loadNextNumber();
     recalc();
   } else if (auth === '1') {
-    await loadCompanies();
-    renderCompanyList();
     showScreen('company');
+    await loadCompanies();
   } else {
     showScreen('pin');
   }
